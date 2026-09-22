@@ -16,23 +16,23 @@
 
 ### Entities
 The main entities are going to be the videogames itselves:
-| VIDEOGAME |
-| ------------- |
-|  `Name` |
-|  `Cover` |
-| `Price`|
-|  `Release date` |
-| `Company` |
-| `Genre` |
-| `Console` |
+| VIDEOGAME | TYPE |
+| ------------- | ------------- |
+|  `Name` | `String` |
+|  `Cover` |`Image`|
+| `Price`|`Integer`|
+|  `Release date` |`String [DD/MM/YYYY]`|
+| `Company` |`String`|
+| `Genre` |`[Acción (Shooters FPS/TPS, Plataformas, Hack and Slash, Lucha, Beat 'em up, Battle Royale)Aventura (Aventura gráfica, Novela visual, Walking simulator, Survival horror)Rol / RPG (JRPG, ARPG, MMORPG, RPG táctico, Roguelike, Roguelite)Estrategia (RTS, TBS, MOBA, Tower Defense, Grand Strategy)Simulación (Simulador de vida, Simulador de vehículos, Gestión y construcción, Sandbox)Deportes y Conducción (Simulador deportivo, Deportes arcade, Carreras, Simulación de conducción)Puzle y Ritmo (Lógica, Acertijos, Juegos musicales, Cartas, Tablero digital)] `|
+| `Console` |`String`|
 
 The secondary entities are going to be each game review:
-| REVIEW |
-| ------------- |
-|  `Score` |
-|  `Source` |
-|  `Text` |
-|  `Date` |
+| REVIEW | TYPE |
+| ------------- | ------------- |
+|  `Score` |`[1..100]`|
+|  `Source` |`string`|
+|  `Text` |`string`|
+|  `Date` |`String [DD/MM/YYYY]`|
 
 ### IMAGES
 - Each game must have a cover so it can be easily identified by every user.
@@ -41,6 +41,5 @@ The secondary entities are going to be each game review:
 
 ### Extra features
 - The web will feature a search engine to look for key words related to the games.
-- The games will be categorized by the genre.
 - It will also be possible to filter the games by price or release date.
 These features will improve the user experience browsing in our web.
