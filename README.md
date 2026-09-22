@@ -16,7 +16,7 @@
 
 ### Entities
 The main entities are going to be the videogames itselves:
-| VIDEOGAMES |
+| VIDEOGAME |
 | ------------- |
 |  `Name` |
 |  `Cover` |
