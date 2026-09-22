@@ -24,6 +24,7 @@ The main entities are going to be the videogames itselves:
 |  `Release date` |
 | `Company` |
 | `Genre` |
+| `Console` |
 
 The secondary entities are going to be each game review:
 | REVIEW |
