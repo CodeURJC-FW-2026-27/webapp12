@@ -26,7 +26,7 @@ The main entities are going to be the videogames itselves:
 | `Genre` |`[Acción (Shooters FPS/TPS, Plataformas, Hack and Slash, Lucha, Beat 'em up, Battle Royale)Aventura (Aventura gráfica, Novela visual, Walking simulator, Survival horror)Rol / RPG (JRPG, ARPG, MMORPG, RPG táctico, Roguelike, Roguelite)Estrategia (RTS, TBS, MOBA, Tower Defense, Grand Strategy)Simulación (Simulador de vida, Simulador de vehículos, Gestión y construcción, Sandbox)Deportes y Conducción (Simulador deportivo, Deportes arcade, Carreras, Simulación de conducción)Puzle y Ritmo (Lógica, Acertijos, Juegos musicales, Cartas, Tablero digital)] `|
 | `Console` |`String`|
 
-The secondary entities are going to be each game review:
+The secondary entities are going to be each game review, which can be uploaded by any user or game reviewer platform like IGN, OpenCritic...
 | REVIEW | TYPE |
 | ------------- | ------------- |
 |  `Score` |`[1..100]`|
