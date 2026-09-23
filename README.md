@@ -23,7 +23,7 @@ The main entities are going to be the videogames itselves:
 | `Price`|`Integer`|
 |  `Release date` |`String [DD/MM/YYYY]`|
 | `Company` |`String`|
-| `Genre` |`[Acción (Shooters FPS/TPS, Plataformas, Hack and Slash, Lucha, Beat 'em up, Battle Royale)Aventura (Aventura gráfica, Novela visual, Walking simulator, Survival horror)Rol / RPG (JRPG, ARPG, MMORPG, RPG táctico, Roguelike, Roguelite)Estrategia (RTS, TBS, MOBA, Tower Defense, Grand Strategy)Simulación (Simulador de vida, Simulador de vehículos, Gestión y construcción, Sandbox)Deportes y Conducción (Simulador deportivo, Deportes arcade, Carreras, Simulación de conducción)Puzle y Ritmo (Lógica, Acertijos, Juegos musicales, Cartas, Tablero digital)] `|
+| `Genre` |`[Action (FPS/TPS Shooters, Platforming, Hack and Slash, Fighting, Beat 'em up, Battle Royale) Adventure (Graphic Adventure, Visual Novel, Walking Simulator, Survival Horror) Role-Playing / RPG (JRPG, ARPG, MMORPG, Tactical RPG, Roguelike, Roguelite) Strategy (RTS, TBS, MOBA, Tower Defense, Grand Strategy) Simulation (Life Sim, Vehicle Sim, Management & Construction, Sandbox) Sports & Driving (Sports Sim, Arcade Sports, Racing, Driving Sim) Puzzle & Rhythm (Logic, Riddles, Music Games, Card Games, Digital Board Games)] `|
 | `Console` |`String`|
 
 The secondary entities are going to be each game review, which can be uploaded by any user or game reviewer platform like IGN, OpenCritic...
