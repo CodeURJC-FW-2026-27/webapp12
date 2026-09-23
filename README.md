@@ -1,4 +1,4 @@
-# ![alt text](https://github.com/CodeURJC-FW-2026-27/webapp12/blob/main/gameline%20peque%C3%B1o.png) GAMELINE : _A web for browsing videogames_
+# ![alt text](https://github.com/CodeURJC-FW-2026-27/webapp12/blob/main/IMAGES/gameline%20peque%C3%B1o.png) GAMELINE : _A web for browsing videogames_
 ## Project members
 
 
