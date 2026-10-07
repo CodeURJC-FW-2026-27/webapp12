@@ -1,49 +1,53 @@
-<html>
-<title>GAMELINE - A web for browsing videogames</title>
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-wid,initial-scale=1">
+    <title>Nuevo Juego | GAMELINE </title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+<link href="styles.css" rel="stylesheet" />
+</head>
 <body>
-<h1>GAMELINE <img src="gameline pequeño.png" > </h1>
-</body>
+    <main class="container py-5">
+        <h1 class="mb-4">Nuevo Juego</h1>
+         
+      <!--CREACION DE LOS CAMPOS-->  
+      <form class="row g-3" style="max-width: 760px">
+ <div class="col-12">
+    <label for="name" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="name" name="name" required>
+ </div> 
+
+ <div class="col-md-6">
+    <label for="company" class="form-label">Compañia</label>
+    <input type="text" class="form-control" id="company" name="company" required>
+ </div> 
  
+    <div class="col-md-4">
+    <label for="price" class="form-label">Fecha de lanzamiento</label>
+    <input type="text" class="form-control" id="date" name="date" placeholder="DD/MM/YY" required>
+ </div> 
   
- <!-- GROUP MEMBERS -->
-<section id="equipo">
-<h2>Project Team </h2>
-<table>  
-    <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>GitHub user </th>
-    </tr>
-    <tbody>
-        <tr>
-            <td>David Gonzalez Pato</td>
-            <td><a href="mailto:d.gonzalezp.2025@alumnos.urjc.es">d.gonzalezp.2025@alumnos.urjc.es</a></td>
-            <td>paatiito</td>
-        </tr>
-        <tr>
-            <td>Leonardo Di Salvo Alonso</td>
-            <td><a href = "mailto:l.di.2025@alumnos.urjc.es">l.di.2025@alumnos.urjc.es</a></td>
-            <td>Leeo1405</td>
-        </tr>
-        <tr>
-            <td>Asier Zapata Fernández-Gallardo</td>
-            <td><a href="mailto:a.zapata.2025@alumnos.urjc.es">a.zapataf.2025@alumnos.urjc.es</a></td>
-            <td>asierzzzz</td>
-        </tr>
-        <tr>
-            <td>Aitor Mouzo Navarro</td>
-            <td><a href="mailto:a.mouzo.2025@alumnos.urjc.es">a.mouzo.2025@alumnos.urjc.es</a></td>
-            <td>Aiitoorr</td>
-        </tr>
-    </tbody>
-</table>
-</section>
+   <div class="col-md-4">
+    <label for="date" class="form-label">Precio($)</label>
+    <input type="number" class="form-control" id="price" name="price" min="0" required>
+ </div> 
+ 
+<div class="col-md-4">
+    <label for="cover" class="form-label">Imagen</label>
+    <input type="file" class="form-control" id="cover" name="cover" accept="image/*" required>
+ </div> 
 
+      </form>  
+    
+    </main>
 
-<!--FOOTER-->
-<footer style="background-color: black;color:white">"
-    <p> 2026 Gameline - Universidad Rey Juan Carlos</p>
-<p><a href="#top" style="color:white">Back to top</a></p>
-</footer>
+   
+
+<!--BOTONES GUARDAR Y SALIR-->
+<div class="col-12 d-flex gap-2">
+    <button type="button" class="btn btn-primary">Guardar </button>
+    <a href="index.html" class="btn btn-secondary">Cancelar </button>
+</div>
 </body>
 </html>
