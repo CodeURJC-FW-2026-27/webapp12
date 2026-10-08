@@ -4,10 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width = device-wid,initial-scale=1">
     <title>Nuevo Juego | GAMELINE </title>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 <link href="styles.css" rel="stylesheet" />
 </head>
 <body>
+
+<!--HEADER -->
+       <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <!-- LOGO -->
+                 <img src="gameline pequeño.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
+                <a class="navbar-brand">GAMELINE</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                           
+                        </ul>
+
+                    <!--CART BUTTON-->
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
     <main class="container py-5">
         <h1 class="mb-4">New Game</h1>
          
@@ -63,5 +92,10 @@
     <button type="button" class="btn btn-primary">Save </button>
     <a href="index.html" class="btn btn-secondary">Cancel </a>
 </div>
+
+<!-- Footer-->
+        <footer class="py-5 bg-light">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; GAMELINE</p></div>
+        </footer>
 </body>
 </html>
