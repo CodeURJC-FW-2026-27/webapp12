@@ -99,7 +99,7 @@
 
     <div class="col-12">
 
-        <h2>Review</h2>
+        <h2>Reviews</h2>
 
         <div class="card">
 
@@ -126,11 +126,8 @@
                     <strong>Date:</strong> 03/03/2017
                 </p>
                 
-
-            
-                <!--ADD BUTTON-->
-                <button class="btn btn-success mt-3">
-                    <i class="fas fa-plus"></i> Add Review
+                
+               
                 </button>
                 <!--DELETE BUTTON-->
                 <button class="btn btn-danger mt-3">
@@ -148,6 +145,60 @@
     </div>
 
 </div>
+                <!-- Add review -->
+                 <!--CREACION DE LOS CAMPOS-->  
+      <form class="row g-3" style="max-width: 760px">
+ <div class="col-12">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" name="name" required>
+ </div> 
+
+ <div class="col-md-6">
+    <label for="company" class="form-label">Company</label>
+    <input type="text" class="form-control" id="company" name="company" required>
+ </div> 
+ 
+    <div class="col-md-4">
+    <label for="price" class="form-label">Release Date</label>
+    <input type="text" class="form-control" id="date" name="date" placeholder="DD/MM/YY" required>
+ </div> 
+  
+   <div class="col-md-4">
+    <label for="date" class="form-label">Price($)</label>
+    <input type="number" class="form-control" id="price" name="price" min="0" required>
+ </div> 
+ 
+<div class="col-md-6">
+    <label for="cover" class="form-label">Image</label>
+    <input type="file" class="form-control" id="cover" name="cover" accept="image/*" required>
+ </div> 
+
+ <label for="Genre">Genre</label><br>
+ <select id="genre" name="genre">
+    <option value="all" selected>All genres</option>
+        <option value="action" selected>Action</option>
+        <option value="adventure" selected>Adventure</option>
+        <option value="rpg" selected>Role-playing / RPG </option>
+        <option value="strategy" selected>Strategy</option>
+        <option value="Fighting" selected>Fighting</option>
+        <option value="all" selected>All genres</option>
+        <option value="simulation" selected>Simulation</option>
+        <option value="Sport & Driving " selected>Sport & Driving </option>
+            <option value="Puzzle & Rhythm" selected>Puzzle & Rhythm</option>
+ </select><br>
+
+      </form>  
+    
+    </main>
+
+   
+
+<!--BOTONES GUARDAR Y SALIR-->
+<div style="text-align: center">
+    <button type="button" class="btn btn-primary">Save </button>
+    <a href="index.html" class="btn btn-secondary">Cancel </a>
+</div>
+
                 <!-- BACK BUTTON -->
                 <a href="index.html" class="btn btn-secondary mt-3">
                     <i class="fas fa-arrow-left"></i> Back to Store
