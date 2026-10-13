@@ -10835,3 +10835,12 @@ textarea.form-control-lg {
 .navbar img {
   margin-right: 8px; /* el espacio que quieras */
 }
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 10px;
+
+
+}
