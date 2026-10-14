@@ -85,5 +85,19 @@ These features will improve the user experience browsing in our web.
   - [Creation of fields for adding a new game](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/9f5c9102704b9fe96ea70a51319847ba28e28035)
   - [Add the Save and Cancel buttons, where the Cancel button redirects to the main page when clicked.](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/1b4e2b1a08b908522f93e2ba971867b667da2c61)
   - [Removal of duplicate buttons](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/a5dcc433520c1e3b04e8912b45716b3d6f8d8616)
-  - [Properly link the game images so they appear on the website.](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/747448a81ff335d42ee55dcb50738f605567edb6) 
+  - [Properly link the game images so they appear on the website.](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/747448a81ff335d42ee55dcb50738f605567edb6)
+    #### Aitor Mouzo Navarro
+  - Most of my work was focused on the About page, where I developed most of the structure and added the content.
+  - I also helped with some small presentation details on the Index page.
+  - My 5 more significative commits are:
+     - [ADDED ABOUT SECTION.](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/5b3af21d9922515f515f3b5a5f271d43bdd92940)
+     - [DELETE BUTTON AND EDIT BUTTON ADDED TO ABOUT.HTML](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/83f76ada2ba4daf885873e046a300fb8e7144273)
+     - [BACK BUTTON ADDED TO ABOUT PAGE](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/1f7f5f66ea80cba5815aeeaa83728de029028d24)
+     - [Add,Delete and Edit buttons added to the about.html page.](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/c35060e9be19c04109b8434322459e7e1ca2ffc9)
+     - [Detailing the changes made to the about.html file, it appears that a style attribute was added to the div with the class "card".](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/2f3fb0f04cbfc09270bf5b1df08747cd3f809fc5)
+       
+  
+    
+
+
 
