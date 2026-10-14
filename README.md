@@ -70,7 +70,7 @@ These features will improve the user experience browsing in our web.
 
 ### Leonardo Di Salvo Alonso
 - I worked primarily on the visual aspects of the page, helping to organize the interface and the presentation.
-- The page i worked the most on is 'index'.
+- The page i worked the most on is `index`.
 - [Added product details on index.html](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/9ab3abed3dc9c9836cfe723fda857efa0c17e6ac)
 - [Added all images and game names](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/ac82d814a0f191307cf7955404a0aa327a17ee9c)
 - [Changed some buttons and Cart](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/d9d3100744a55f5e01740ae8c8dfbcebc6dc2370)
