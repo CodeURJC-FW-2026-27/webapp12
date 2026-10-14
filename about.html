@@ -22,49 +22,48 @@
 <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container px-4 px-lg-5">
-            <!-- LOGO -->
-            <img src="gameline pequeño.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
-            <a class="navbar-brand">GAMELINE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <div class="container px-4 px-lg-5">
+                <!-- LOGO -->
+                 <img src="gameline pequeño.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
+                <a class="navbar-brand">GAMELINE</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                          
+                        </ul>
 
-                </ul>
-
-                <!--CART BUTTON-->
-
-                <button class="btn btn-outline-dark border border-2 text-white" type="submit"
-                    style="margin-right: 15px;">
-
-                    <a href="New.html" class="text-white">Add a new game </a>
-
-                </button>
+                    
+           
+                        <button class="btn btn-outline-dark border border-2 text-white" type="submit" style="margin-right: 10px;">
+                            
+                            <a href="New.html" class="text-white">Add a new game </a>
+                          
+                        </button>
                 <div>
-                    <input type="text" placeholder="Search...">
-                    <button class="btn btn-outline-dark border border-2 text-white"> Search</button>
+                <input  type="text" placeholder="Search..." >    
+                <button class="btn btn-outline-dark border border-2 text-white" style="margin-right: 10px;"> Search</button>
+                </div>
+                </div>
+                <div style="text-align: center" >
+             <label class="text-white " for="Genre">Genre</label><br>
+             <select select style="display: block; margin: 0 auto;"> 
+             <option value="all" selected>All genres</option>
+             <option value="action" selected>Action</option>
+             <option value="adventure" selected>Adventure</option>
+             <option value="rpg" selected>Role-playing / RPG </option>
+             <option value="strategy" selected>Strategy</option>
+             <option value="Fighting" selected>Fighting</option>
+             <option value="all" selected>All genres</option>
+             <option value="simulation" selected>Simulation</option>
+             <option value="Sport & Driving " selected>Sport & Driving </option>
+             <option value="Puzzle & Rhythm" selected>Puzzle & Rhythm</option>
+             </select><br>
                 </div>
 
-                <div style="text-align: right;">
-             <label for="Genre">Genre</label><br>
-              <select style="display: block; margin-right: 20px; text-align: right;"> 
-         <option value="all" selected>All genres</option>
-        <option value="action" selected>Action</option>
-        <option value="adventure" selected>Adventure</option>
-        <option value="rpg" selected>Role-playing / RPG </option>
-        <option value="strategy" selected>Strategy</option>
-        <option value="Fighting" selected>Fighting</option>
-        <option value="all" selected>All genres</option>
-        <option value="simulation" selected>Simulation</option>
-        <option value="Sport & Driving " selected>Sport & Driving </option>
-            <option value="Puzzle & Rhythm" selected>Puzzle & Rhythm</option>
- </select><br>
-            </div>
-        </div>
-    </nav>
 
+            </div>
+             
+        </nav>
 
 
     <section class="py-5">
@@ -129,6 +128,53 @@
                         </button>
 
                     </div>
+
+                    <!-- Add review -->
+                    <!--CREACION DE LOS CAMPOS-->
+                    <div>
+                        <h2 class="mt-5">Add a review</h2>
+                        <div class="card" style="margin-top: 10px;">
+
+                            <div class="card-body">
+                                <form class="row g-3" style="max-width: 760px">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Score</label>
+                                        <input type="number" class="form-control" id="name" name="name" min="0"
+                                            max="100" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="company" class="form-label">Source</label>
+                                        <input type="text" class="form-control" id="company" name="company" required>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="date" class="form-label">Text</label>
+                                        <input type="text" class="form-control" id="Text" name="price" min="0" required>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="price" class="form-label"> Date</label>
+                                        <input type="text" class="form-control" id="date" name="date"
+                                            placeholder="DD/MM/YY" required>
+                                    </div>
+
+
+
+                                </form>
+                            </div>
+
+
+
+                            <!--BOTONES GUARDAR Y SALIR-->
+                            <div style="text-align: center">
+                                <button type="button" class="btn btn-primary">Save </button>
+                                <a href="about.html" class="btn btn-secondary">Cancel </a>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <!-- SECONDARY ENTITY: REVIEW -->
                     <div class="row mt-5">
 
@@ -136,7 +182,7 @@
 
                             <h2>Reviews</h2>
 
-                            <div class="card">
+                            <div class="card" >
 
                                 <div class="card-body">
 
@@ -177,52 +223,50 @@
                                 </div>
 
                             </div>
+                            <div class="card">
 
-                        </div>
+                                <div class="card-body">
 
-                    </div>
-                    <!-- Add review -->
-                    <!--CREACION DE LOS CAMPOS-->
-                    <div class="card"style="margin-top: 10px;">
+                                    <!-- Score -->
+                                    <h5 class="card-title">
+                                        <strong>Score:</strong> 97
+                                    </h5>
 
-                        <div class="card-body">
-                            <form class="row g-3" style="max-width: 760px">
-                                <div class="col-md-6">
-                                    <label for="name" class="form-label">Score</label>
-                                    <input type="number" class="form-control" id="name" name="name" min="0" max="100"
-                                        required>
+                                    <!-- Source -->
+                                    <p>
+                                        <strong>Source:</strong> Metacritic
+                                    </p>
+
+                                    <!-- Text -->
+                                    <p class="card-text">
+                                        Where it takes mechanics from others in the industry, it improves upon them; where it introduces new ones, you slap your forehead in amazement that it hasn’t been done before. Breath of the Wild is development done right, and damn near the best game you’ll play all year.
+                                    </p>
+
+                                    <!-- Date -->
+                                    <p>
+                                        <strong>Date:</strong> 03/03/2017
+                                    </p>
+
+
+
+                                    </button>
+                                    <!--DELETE BUTTON-->
+                                    <button class="btn btn-danger mt-3">
+                                        <i class="fas fa-trash"></i> Delete Review
+                                    </button>
+                                    <!--EDIT BUTTON-->
+                                    <button class="btn btn-primary mt-3">
+                                        <i class="fas fa-edit"></i> Edit Review
+                                    </button>
+
                                 </div>
 
-                                <div class="col-md-6">
-                                    <label for="company" class="form-label">Source</label>
-                                    <input type="text" class="form-control" id="company" name="company" required>
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="date" class="form-label">Text</label>
-                                    <input type="text" class="form-control" id="Text" name="price" min="0" required>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label for="price" class="form-label"> Date</label>
-                                    <input type="text" class="form-control" id="date" name="date" placeholder="DD/MM/YY"
-                                        required>
-                                </div>
-
-
-
-                            </form>
-
-                            </main>
-
-
-                            <!--BOTONES GUARDAR Y SALIR-->
-                            <div style="text-align: center">
-                                <button type="button" class="btn btn-primary">Save </button>
-                                <a href="about.html" class="btn btn-secondary">Cancel </a>
                             </div>
+
                         </div>
+
                     </div>
+
 
 
 
