@@ -67,3 +67,12 @@ These features will improve the user experience browsing in our web.
   - [changed the template to have a new game button and linked all of the buttons to the about page](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/c5f61990c1ad4c8598ea3a7f416dcc44c4f256c4)
   - [Changed the header in about and in new to match index and also added a review and updated review system in new so the form to add a new review is on top of the reviews itselves](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/3a95b04636f2a6a1e0163cf18adef54db7128d1c)
   - [added header and footer to the new.html file, and added fonts to the head section of the html file](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/90115f7b264fe1ad8004960fa50387a77b554a87)
+
+### Leonardo Di Salvo Alonso
+- I worked primarily on the visual aspects of the page, helping to organize the interface and the presentation.
+- The page i worked the most on is 'index'.
+- [Added product details on index.html](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/9ab3abed3dc9c9836cfe723fda857efa0c17e6ac)
+- [Added all images and game names](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/ac82d814a0f191307cf7955404a0aa327a17ee9c)
+- [Changed some buttons and Cart](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/d9d3100744a55f5e01740ae8c8dfbcebc6dc2370)
+- [Changed Sales Item's names](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/bb625da485d773ea646c35d91e0321dd69e8d0a3)
+- [Removed On Sale badge from the card in index.html](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/576591fcafcae2949edc62c926215465194642c6)
