@@ -81,8 +81,8 @@ These features will improve the user experience browsing in our web.
 - I started the page for creating a new item (`New`) and helped finish the remaining pages.
 - The page I worked on the most was `New`, but I also collaborated on the `about` and `new` pages by adding various buttons that reference game genres.
 - My 5 more significative commits are:
-  1- [Add the different category types.](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/82f592822b193a152a49cf4b4e7344b921cbe48f)
-  2- [Creation of fields for adding a new game](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/9f5c9102704b9fe96ea70a51319847ba28e28035)
-  3- [Add the Save and Cancel buttons, where the Cancel button redirects to the main page when clicked.](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/1b4e2b1a08b908522f93e2ba971867b667da2c61)
-  4- [Removal of duplicate buttons](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/a5dcc433520c1e3b04e8912b45716b3d6f8d8616)
-  5-[Properly link the game images so they appear on the website.](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/747448a81ff335d42ee55dcb50738f605567edb6) 
+  - [Add the different category types.](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/82f592822b193a152a49cf4b4e7344b921cbe48f)
+  - [Creation of fields for adding a new game](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/9f5c9102704b9fe96ea70a51319847ba28e28035)
+  - [Add the Save and Cancel buttons, where the Cancel button redirects to the main page when clicked.](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/1b4e2b1a08b908522f93e2ba971867b667da2c61)
+  - [Removal of duplicate buttons](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/a5dcc433520c1e3b04e8912b45716b3d6f8d8616)
+  -[Properly link the game images so they appear on the website.](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/747448a81ff335d42ee55dcb50738f605567edb6) 
