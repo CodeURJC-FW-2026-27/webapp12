@@ -57,7 +57,7 @@ These features will improve the user experience browsing in our web.
 ![alt text](https://github.com/CodeURJC-FW-2026-27/webapp12/blob/main/IMAGES/Screenshots/index5.png "index 5")
 #### Details Page
 ![alt text](https://github.com/CodeURJC-FW-2026-27/webapp12/blob/main/IMAGES/Screenshots/Sin%20t%C3%ADtulo.png "details")
-###Participacion en la practica
+### Participacion en la practica
 #### Asier Zapata Fernández-Gallardo
 - I chose the template, started the index page and helped create all of the other pages and have a common direction.
 - The page i worked the most on is `index`, but i also helped in `about` and `new` inserting the header and the footer and helping formatting the pages.  
@@ -71,11 +71,11 @@ These features will improve the user experience browsing in our web.
 ### Leonardo Di Salvo Alonso
 - I worked primarily on the visual aspects of the page, helping to organize the interface and the presentation.
 - The page i worked the most on is `index`.
-- [Added product details on index.html](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/9ab3abed3dc9c9836cfe723fda857efa0c17e6ac)
-- [Added all images and game names](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/ac82d814a0f191307cf7955404a0aa327a17ee9c)
-- [Changed some buttons and Cart](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/d9d3100744a55f5e01740ae8c8dfbcebc6dc2370)
+- [Added product details for them to show price, genre, developer and platforms on each of the games](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/9ab3abed3dc9c9836cfe723fda857efa0c17e6ac)
+- [Added and placed all of the images and game names](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/ac82d814a0f191307cf7955404a0aa327a17ee9c)
+- [Changed some malfunctioning buttons and fixed the cart`s functionality and aspect](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/d9d3100744a55f5e01740ae8c8dfbcebc6dc2370)
 - [Changed Sales Item's names](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/bb625da485d773ea646c35d91e0321dd69e8d0a3)
-- [Removed On Sale badge from the card in index.html](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/576591fcafcae2949edc62c926215465194642c6)
+- [Removed innecesary badges from the main games cards](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/576591fcafcae2949edc62c926215465194642c6)
 
    - ### David González Pato
 - I started the page for creating a new item (`New`) and helped finish the remaining pages.
