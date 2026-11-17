@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Error | GAMELINE</title>
-    <!-- Mismo CSS que el resto de la web, para mantener el estilo -->
-    <link href="/styles.css" rel="stylesheet" />
-</head>
-<body class="d-flex flex-column min-vh-100">
-
-    <!-- Barra superior sencilla con el nombre de la web (enlaza a la página principal) -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="/">GAMELINE</a>
-        </div>
-    </nav>
+{{> header}}
 
     <main class="container py-5 text-center">
         <h1 class="mb-4">Error</h1>
@@ -33,13 +17,4 @@
         <a href="{{backUrl}}" class="btn btn-primary mt-4">{{backText}}</a>
     </main>
 
-    <!-- Pie de página, igual que en el resto de la web -->
-    <footer class="py-5 bg-light mt-auto">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; GAMELINE</p>
-        </div>
-    </footer>
-
-</body>
-
-</html>
+   {{> footer}}
