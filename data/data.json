@@ -14,5 +14,13 @@
         "price": 69.99,
         "imageFilename": "resized_Captura de pantalla 2026-10-07 174603.png",
         "genre": "Action"
+    },
+    {
+        "Title": "Cuphead",
+        "company": "Studio MDHR",
+        "date": "2017-09-29",
+        "price": 29.99,
+        "imageFilename": "Cuphead.png",
+        "genre": "Platformer"
     }
 ]
