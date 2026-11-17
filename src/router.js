@@ -196,34 +196,14 @@ router.get('/', async (req, res) => {
     });
 });
 
-router.post('/post/new', upload.single('image'), async (req, res) => {
+// Formulario de juego nuevo (esta ruta debe ir ANTES de /post/:id)
+router.get('/post/new', (req, res) => {
 
-    // Validamos los datos; si hay errores, mostramos la página de error
-    const errors = await validatePost(req.body);
-
-    if (errors.length > 0) {
-        // Borramos la imagen subida para no dejar archivos sueltos
-        if (req.file) await fs.rm(req.file.path);
-        return showError(res, errors, '/New.html', 'Volver al formulario');
-    }
-
-    const { company, date, price, genre } = req.body;
-    const numericPrice = Number(price);
-
-    let post = {
-        Title: req.body.Title.trim(),
-        company: company.trim(),
-        date: date.trim(),
-        price: numericPrice,
-        ...(genre && { genre }),
-        ...(req.file && { imageFilename: req.file.filename })
-    };
-
-    const result = await board.addPost(post);
-
-    res.render('saved_post', { _id: result.insertedId.toString() });
-
+    renderForm(res, 'New Game', '/post/new', {}, '/');
 });
+
+// Crear un juego nuevo
+router.post('/post/new', upload.single('image'), savePost);
 
 router.get('/post/:id', async (req, res) => {
 
