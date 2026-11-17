@@ -22,5 +22,37 @@
         "price": 29.99,
         "imageFilename": "Cuphead.png",
         "genre": "Platformer"
+    },
+    {
+        "Title": "Cyberpunk 2077",
+        "company": "CD Projekt",
+        "date": "2020-12-10",
+        "price": 59.99,
+        "imageFilename": "cyberpunk2077.png",
+        "genre": "RPG"   
+    },
+    {
+        "Title": "GTA VI",
+        "company": "Rockstar Games",
+        "date": "2026-19-11",
+        "price": 69.99,
+        "imageFilename": "GTA VI.png",
+        "genre": "Action"   
+    }
+    {
+        "Title": "Elden Ring",
+        "company": "FromSoftware",
+        "date": "2022-02-25",
+        "price": 59.99,
+        "imageFilename": "Elden Ring.png",
+        "genre": "RPG"
+    }
+    {
+        "Title":"Red Dead Redemption 2",
+        "company":"Rockstar Games",
+        "date":"2018-10-26",    
+        "price":59.99,
+        "imageFilename":"RDR2.png",
+        "genre":"Action"
     }
 ]
