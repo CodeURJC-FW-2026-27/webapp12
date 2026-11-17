@@ -7,7 +7,9 @@
     <link href="/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container my-5" style="max-width: 600px;">
+    <div class="container my-5" style="max-width: {{#isEdit}}1100px{{/isEdit}}{{^isEdit}}600px{{/isEdit}};">
+        <div class="row g-4">
+    <div class="{{#isEdit}}col-md-6{{/isEdit}}{{^isEdit}}col-12{{/isEdit}}">
         <h1 class="mb-4">{{formTitle}}</h1>
 
         <form action="{{action}}" method="post" enctype="multipart/form-data">
@@ -50,7 +52,24 @@
 
             <button type="submit" class="btn btn-outline-dark">Save</button>
             <a href="{{cancelUrl}}" class="btn btn-outline-secondary">Cancel</a>
-        </form>
+        <h2 class="mb-4">Current image:</h2>
+
+            {{#post.imageFilename}}
+            <img src="/post/{{post._id}}/image"
+                 alt="{{post.Title}}"
+                 class="img-fluid rounded border"
+                 style="width: 100%; max-height: 450px; object-fit: contain;">
+            {{/post.imageFilename}}
+
+            {{^post.imageFilename}}
+            <p>No image available.</p>
+            {{/post.imageFilename}}
+
+        </div>
+        {{/isEdit}}
+
     </div>
+</div>
+
 </body>
 </html>
