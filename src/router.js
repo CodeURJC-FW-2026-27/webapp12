@@ -47,11 +47,85 @@ async function validatePost(data) {
 
     return errors;
 }
+// Number of games shown on each page of the main page
+const POSTS_PER_PAGE = 6;
+
+// Genres offered as filter buttons (value is what the form stores in the database)
+const GENRES = [
+    { value: 'action', label: 'Action' },
+    { value: 'adventure', label: 'Adventure' },
+    { value: 'rpg', label: 'Role-playing / RPG' },
+    { value: 'strategy', label: 'Strategy' },
+    { value: 'Fighting', label: 'Fighting' },
+    { value: 'simulation', label: 'Simulation' },
+    { value: 'Sport & Driving', label: 'Sport & Driving' },
+    { value: 'Puzzle & Rhythm', label: 'Puzzle & Rhythm' }
+];
+
+// Builds a main page URL keeping the current search and genre
+function buildUrl({ search, genre, page }) {
+
+    const params = new URLSearchParams();
+    if (search) params.set('search', search);
+    if (genre) params.set('genre', genre);
+    if (page > 1) params.set('page', page);
+
+    const query = params.toString();
+    return query ? '/?' + query : '/';
+}
+
 router.get('/', async (req, res) => {
 
-    let posts = await board.getPosts();
+    // Query parameters are optional; ignore anything that is not plain text
+    const search = typeof req.query.search === 'string' ? req.query.search.trim() : '';
+    const genre = typeof req.query.genre === 'string' ? req.query.genre.trim() : '';
 
-    res.render('index', { posts });
+    const total = await board.countPosts({ search, genre });
+    const totalPages = Math.max(1, Math.ceil(total / POSTS_PER_PAGE));
+
+    // Keep the requested page inside the valid range
+    const requested = parseInt(req.query.page, 10);
+    const page = Number.isInteger(requested) ? Math.min(Math.max(requested, 1), totalPages) : 1;
+
+    const posts = await board.getPostsPage({
+        search,
+        genre,
+        skip: (page - 1) * POSTS_PER_PAGE,
+        limit: POSTS_PER_PAGE
+    });
+
+    // One link per page, with the current one marked
+    const pages = [];
+    for (let number = 1; number <= totalPages; number++) {
+        pages.push({
+            number,
+            url: buildUrl({ search, genre, page: number }),
+            current: number === page
+        });
+    }
+
+    // Genre buttons: changing the genre always goes back to page 1
+    const genres = GENRES.map(g => ({
+        label: g.label,
+        url: buildUrl({ search, genre: g.value }),
+        active: g.value.toLowerCase() === genre.toLowerCase()
+    }));
+
+    res.render('index', {
+        posts,
+        search,
+        genre,
+        genres,
+        allGenresUrl: buildUrl({ search }),
+        allGenresActive: !genre,
+        filtered: Boolean(search || genre),
+        pages,
+        showPagination: totalPages > 1,
+        hasPrevious: page > 1,
+        previousUrl: buildUrl({ search, genre, page: page - 1 }),
+        hasNext: page < totalPages,
+        nextUrl: buildUrl({ search, genre, page: page + 1 })
+    });
 });
 
 router.post('/post/new', upload.single('image'), async (req, res) => {
