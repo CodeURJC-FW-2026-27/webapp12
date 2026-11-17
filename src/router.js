@@ -8,6 +8,11 @@ const router = express.Router();
 export default router;
 
 const upload = multer({ dest: board.UPLOADS_FOLDER })
+// Muestra la página de error con la lista de mensajes y un botón de vuelta
+function showError(res, errors, backUrl, backText) {
+
+    res.status(400).render('error', { errors, backUrl, backText });
+}
 
 router.get('/', async (req, res) => {
 
