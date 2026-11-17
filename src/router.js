@@ -211,20 +211,7 @@ router.get('/post/:id', async (req, res) => {
 
     res.render('show_post', { post });
 });
-// Edit form, filled with the current values of the game
-router.get('/post/:id/edit', async (req, res) => {
 
-    const post = await board.getPost(req.params.id);
-
-    if (!post) {
-        return showError(res, ['El juego no existe.'], '/', 'Ir a la página principal');
-    }
-
-    renderForm(res, 'Edit Game', `/post/${req.params.id}/edit`, post, `/post/${req.params.id}`);
-});
-
-// Save the edited game
-router.post('/post/:id/edit', upload.single('image'), savePost);
 router.post('/post/:id/delete', async (req, res) => {
 
     let post = await board.deletePost(req.params.id);
