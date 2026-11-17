@@ -85,7 +85,63 @@ function buildUrl({ search, genre, page }) {
     const query = params.toString();
     return query ? '/?' + query : '/';
 }
+// Guarda un juego: sirve tanto para crear (sin id) como para editar (con id)
+async function savePost(req, res) {
 
+    const id = req.params.id;
+    const isEdit = Boolean(id);
+    const formUrl = isEdit ? /post/${id}/edit : '/post/new';
+
+    // Validamos los datos; si hay errores, mostramos la página de error
+    const errors = await validatePost(req.body, id);
+
+    if (errors.length > 0) {
+        if (req.file) await fs.rm(req.file.path);
+        return showError(res, errors, formUrl, 'Volver al formulario');
+    }
+
+    const { company, date, price, genre } = req.body;
+
+    // Campos que se guardan en la base de datos
+    const fields = {
+        Title: req.body.Title.trim(),
+        company: company.trim(),
+        date: date.trim(),
+        price: Number(price),
+        ...(genre && { genre })
+    };
+
+    // Crear un juego nuevo
+    if (!isEdit) {
+        if (req.file) fields.imageFilename = req.file.filename;
+
+        const result = await board.addPost(fields);
+
+        return showMessage(res, 'Juego creado', 'El juego ha sido creado correctamente.',
+            /post/${result.insertedId}, 'Ver el juego');
+    }
+
+    // Editar un juego existente
+    const oldPost = await board.getPost(id);
+
+    if (!oldPost) {
+        if (req.file) await fs.rm(req.file.path);
+        return showError(res, 'El juego no existe.', '/', 'Ir a la página principal');
+    }
+
+    // Si se sube una imagen nueva, sustituye a la anterior; si no, se mantiene la actual
+    if (req.file) {
+        fields.imageFilename = req.file.filename;
+        if (oldPost.imageFilename) {
+            await fs.rm(board.UPLOADS_FOLDER + '/' + oldPost.imageFilename, { force: true });
+        }
+    }
+
+    await board.updatePost(id, fields);
+
+    showMessage(res, 'Juego actualizado', 'El juego ha sido actualizado correctamente.',
+        /post/${id}, 'Volver al juego');
+}
 router.get('/', async (req, res) => {
 
     // Query parameters are optional; ignore anything that is not plain text
