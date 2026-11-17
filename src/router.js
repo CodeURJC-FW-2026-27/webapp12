@@ -8,6 +8,11 @@ const router = express.Router();
 export default router;
 
 const upload = multer({ dest: board.UPLOADS_FOLDER })
+// Géneros disponibles en el formulario
+const GENRES = [
+    'Action', 'Adventure', 'Role-playing / RPG', 'Strategy',
+    'Fighting', 'Simulation', 'Sport & Driving', 'Puzzle & Rhythm'
+];
 // Muestra la página de error con la lista de mensajes y un botón de vuelta
 function showError(res, errors, backUrl, backText) {
 
@@ -20,7 +25,7 @@ function showMessage(res, title, message, nextUrl, nextText) {
     res.render('message', { title, message, nextUrl, nextText });
 }
 // Comprueba los datos del formulario y devuelve la lista de errores (vacía si todo está bien)
-async function validatePost(data) {
+async function validatePost(data,currentId = null) {
 
     const errors = [];
     const title = data.Title?.trim();
@@ -33,8 +38,9 @@ async function validatePost(data) {
         if (!/^[A-ZÁÉÍÓÚÑ]/.test(title)) {
             errors.push('El título debe empezar por mayúscula.');
         }
-        // El título no puede estar repetido
-        if (await board.getPostByTitle(title)) {
+        // El título no puede coincidir con el de OTRO juego
+        const existing = await board.getPostByTitle(title);
+        if (existing && existing._id.toString() !== currentId) {
             errors.push('Ya existe un juego con ese título.');
         }
     }
@@ -181,6 +187,13 @@ router.post('/post/:id/delete', async (req, res) => {
 
     showMessage(res, 'Juego eliminado', 'El juego ha sido eliminado correctamente.', '/', 'Ir a la página principal');
 });
+// Muestra el formulario de juego (vacío al crear, relleno al editar)
+function renderForm(res, formTitle, action, post, cancelUrl) {
+
+    const genres = GENRES.map(name => ({ name, selected: name === post.genre }));
+
+    res.render('post_form', { formTitle, action, post, genres, cancelUrl, isEdit: Boolean(post._id) });
+}
 
 router.get('/post/:id/image', async (req, res) => {
 
