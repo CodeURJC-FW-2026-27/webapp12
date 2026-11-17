@@ -170,15 +170,16 @@ router.get('/post/:id', async (req, res) => {
     res.render('show_post', { post });
 });
 
-router.get('/post/:id/delete', async (req, res) => {
+router.post('/post/:id/delete', async (req, res) => {
 
     let post = await board.deletePost(req.params.id);
 
+    // Si el juego tenía imagen, borramos también el archivo de uploads
     if (post && post.imageFilename) {
-        await fs.rm(board.UPLOADS_FOLDER + '/' + post.imageFilename);
+        await fs.rm(board.UPLOADS_FOLDER + '/' + post.imageFilename, { force: true });
     }
 
-    res.render('deleted_post');
+    showMessage(res, 'Juego eliminado', 'El juego ha sido eliminado correctamente.', '/', 'Ir a la página principal');
 });
 
 router.get('/post/:id/image', async (req, res) => {
