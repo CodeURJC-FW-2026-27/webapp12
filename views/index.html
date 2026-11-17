@@ -57,6 +57,12 @@
 
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
+             <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+                <a class="btn btn-outline-dark {{#allGenresActive}}active{{/allGenresActive}}" href="{{allGenresUrl}}">All genres</a>
+                {{#genres}}
+                <a class="btn btn-outline-dark {{#active}}active{{/active}}" href="{{url}}">{{label}}</a>
+                {{/genres}}
+            </div>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
                 {{#posts}}
                 <div class="col mb-5">
@@ -85,8 +91,28 @@
             </div>
 
             {{^posts}}
-            <p class="text-center">No posts yet.</p>
+            <p class="text-center">{{#filtered}}No games match your search.{{/filtered}}{{^filtered}}No posts yet.{{/filtered}}</p>
             {{/posts}}
+
+            {{#showPagination}}
+            <nav aria-label="Games pages">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item {{^hasPrevious}}disabled{{/hasPrevious}}">
+                        {{#hasPrevious}}<a class="page-link" href="{{previousUrl}}">Previous</a>{{/hasPrevious}}
+                        {{^hasPrevious}}<span class="page-link">Previous</span>{{/hasPrevious}}
+                    </li>
+                    {{#pages}}
+                    <li class="page-item {{#current}}active{{/current}}">
+                        <a class="page-link" href="{{url}}" {{#current}}aria-current="page"{{/current}}>{{number}}</a>
+                    </li>
+                    {{/pages}}
+                    <li class="page-item {{^hasNext}}disabled{{/hasNext}}">
+                        {{#hasNext}}<a class="page-link" href="{{nextUrl}}">Next</a>{{/hasNext}}
+                        {{^hasNext}}<span class="page-link">Next</span>{{/hasNext}}
+                    </li>
+                </ul>
+            </nav>
+            {{/showPagination}}
 
         </div>
     </section>
