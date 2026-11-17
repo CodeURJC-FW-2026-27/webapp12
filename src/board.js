@@ -72,3 +72,8 @@ export async function getPostsPage({ search, genre, skip = 0, limit = 6 } = {}) 
         .limit(limit)
         .toArray();
 }
+// Actualiza los campos indicados de un juego (el resto de campos no se tocan)
+export async function updatePost(id, fields) {
+
+    return await posts.updateOne({ _id: new ObjectId(id) }, { $set: fields });
+}
