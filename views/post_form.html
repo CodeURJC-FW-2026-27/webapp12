@@ -1,0 +1,55 @@
+{{> header}}
+
+<main class="container py-5">
+    <h1 class="mb-4">{{formTitle}}</h1>
+
+    <!-- El mismo formulario sirve para crear y para editar: solo cambia "action" y los valores -->
+    <form action="{{action}}" method="post" enctype="multipart/form-data" class="row g-3" style="max-width: 760px">
+
+        <div class="col-12">
+            <label for="title" class="form-label">Name</label>
+            <input type="text" class="form-control" id="title" name="Title" value="{{post.Title}}" required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="company" class="form-label">Company</label>
+            <input type="text" class="form-control" id="company" name="company" value="{{post.company}}" required>
+        </div>
+
+        <div class="col-md-4">
+            <label for="date" class="form-label">Release Date</label>
+            <input type="date" class="form-control" id="date" name="date" value="{{post.date}}" required>
+        </div>
+
+        <div class="col-md-4">
+            <label for="price" class="form-label">Price($)</label>
+            <input type="number" class="form-control" id="price" name="price" min="0" max="1000" step="0.01" value="{{post.price}}" required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+            <!-- Este aviso solo sale al editar -->
+            {{#isEdit}}
+            <div class="form-text text-white">Si no eliges una imagen, se mantiene la actual.</div>
+            {{/isEdit}}
+        </div>
+
+        <div class="col-md-6">
+            <label for="genre" class="form-label">Genre</label>
+            <select class="form-select" id="genre" name="genre">
+                <!-- Una opción por género; la del juego actual sale seleccionada -->
+                {{#genres}}
+                <option value="{{name}}" {{#selected}}selected{{/selected}}>{{name}}</option>
+                {{/genres}}
+            </select>
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{{cancelUrl}}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</main>
+
+{{> footer}}
