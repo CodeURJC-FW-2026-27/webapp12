@@ -1,20 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container px-4 px-lg-5">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GAMELINE - A web for browsing videogames</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <!-- Mismo CSS en toda la web (ruta absoluta para que funcione en cualquier página) -->
+    <link href="/styles.css" rel="stylesheet" />
+</head>
 
-        <img src="/img/gameline.png" alt="Logo"
-             width="48" height="48">
-
-        <a class="navbar-brand" href="/">GAMELINE</a>
-
-        <!-- SEARCH -->
-        <div class="d-flex ms-auto">
-            <input type="text" placeholder="Search..." class="form-control me-2">
-
-            <button class="btn btn-outline-dark" type="button">
-                Search
-            </button>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Barra superior -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <img src="/img/gameline.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="/">GAMELINE</a>
+            <a href="/post/new" class="btn btn-outline-dark border border-2 text-white">Add a new game</a>
         </div>
-
-    </div>
-</nav>
+    </nav>
