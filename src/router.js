@@ -13,6 +13,12 @@ function showError(res, errors, backUrl, backText) {
 
     res.status(400).render('error', { errors, backUrl, backText });
 }
+
+// Muestra la página de confirmación con un mensaje y un botón a la siguiente página
+function showMessage(res, title, message, nextUrl, nextText) {
+
+    res.render('message', { title, message, nextUrl, nextText });
+}
 // Comprueba los datos del formulario y devuelve la lista de errores (vacía si todo está bien)
 async function validatePost(data) {
 
