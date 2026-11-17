@@ -8,3 +8,24 @@
     <!-- Mismo CSS que el resto de la web, para mantener el estilo -->
     <link href="/styles.css" rel="stylesheet" />
 </head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Barra superior sencilla con el nombre de la web (enlaza a la página principal) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="/">GAMELINE</a>
+        </div>
+    </nav>
+
+    <main class="container py-5 text-center">
+        <h1 class="mb-4">Error</h1>
+
+        <!-- Cuadro rojo con los mensajes de error -->
+        <div class="alert alert-danger text-start" style="max-width: 600px; margin: 0 auto;">
+            <ul class="mb-0">
+                <!-- Mustache repite este <li> una vez por cada error de la lista "errors" -->
+                {{#errors}}
+                <li>{{.}}</li>
+                {{/errors}}
+            </ul>
+        </div>
