@@ -35,4 +35,9 @@ export async function getPost(id){
 
     return await posts.findOne({ _id: new ObjectId(id) });
 }
+// Busca en la base de datos un juego con exactamente ese título.
+// Devuelve el juego si existe, o null si no existe 
+export async function getPostByTitle(title) {
 
+    return await posts.findOne({ Title: title });
+}
