@@ -9,7 +9,7 @@ export default router;
 
 const upload = multer({ dest: board.UPLOADS_FOLDER })
 // Géneros disponibles en el formulario
-const GENRES = [
+const FORM_GENRES = [
     'Action', 'Adventure', 'Role-playing / RPG', 'Strategy',
     'Fighting', 'Simulation', 'Sport & Driving', 'Puzzle & Rhythm'
 ];
@@ -90,7 +90,7 @@ async function savePost(req, res) {
 
     const id = req.params.id;
     const isEdit = Boolean(id);
-    const formUrl = isEdit ? /post/${id}/edit : '/post/new';
+    const formUrl = isEdit ? `/post/${id}/edit` : '/post/new';
 
     // Validamos los datos; si hay errores, mostramos la página de error
     const errors = await validatePost(req.body, id);
@@ -118,7 +118,7 @@ async function savePost(req, res) {
         const result = await board.addPost(fields);
 
         return showMessage(res, 'Juego creado', 'El juego ha sido creado correctamente.',
-            /post/${result.insertedId}, 'Ver el juego');
+            `/post/${result.insertedId}`, 'Ver el juego');
     }
 
     // Editar un juego existente
@@ -126,8 +126,8 @@ async function savePost(req, res) {
 
     if (!oldPost) {
         if (req.file) await fs.rm(req.file.path);
-        return showError(res, 'El juego no existe.', '/', 'Ir a la página principal');
-    }
+return showError(res, ['El juego no existe.'], '/', 'Ir a la página principal');   
+ }
 
     // Si se sube una imagen nueva, sustituye a la anterior; si no, se mantiene la actual
     if (req.file) {
@@ -140,7 +140,7 @@ async function savePost(req, res) {
     await board.updatePost(id, fields);
 
     showMessage(res, 'Juego actualizado', 'El juego ha sido actualizado correctamente.',
-        /post/${id}, 'Volver al juego');
+        `/post/${id}`, 'Volver al juego');
 }
 router.get('/', async (req, res) => {
 
@@ -211,7 +211,20 @@ router.get('/post/:id', async (req, res) => {
 
     res.render('show_post', { post });
 });
+// Edit form, filled with the current values of the game
+router.get('/post/:id/edit', async (req, res) => {
 
+    const post = await board.getPost(req.params.id);
+
+    if (!post) {
+        return showError(res, ['El juego no existe.'], '/', 'Ir a la página principal');
+    }
+
+    renderForm(res, 'Edit Game', `/post/${req.params.id}/edit`, post, `/post/${req.params.id}`);
+});
+
+// Save the edited game
+router.post('/post/:id/edit', upload.single('image'), savePost);
 router.post('/post/:id/delete', async (req, res) => {
 
     let post = await board.deletePost(req.params.id);
@@ -226,7 +239,7 @@ router.post('/post/:id/delete', async (req, res) => {
 // Muestra el formulario de juego (vacío al crear, relleno al editar)
 function renderForm(res, formTitle, action, post, cancelUrl) {
 
-    const genres = GENRES.map(name => ({ name, selected: name === post.genre }));
+    const genres = FORM_GENRES.map(name => ({ name, selected: name === post.genre }));
 
     res.render('post_form', { formTitle, action, post, genres, cancelUrl, isEdit: Boolean(post._id) });
 }
