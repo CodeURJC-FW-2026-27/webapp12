@@ -1,0 +1,37 @@
+[
+    {
+        "gameTitle": "The Legend of Zelda: Breath of the Wild",
+        "score": 100,
+        "source": "IGN",
+        "text": "The Legend of Zelda: Breath of the Wild is evocative, exhilarating, and a masterclass in open-world design.",
+        "date": "2017-03-03"
+    },
+    {
+        "gameTitle": "The Legend of Zelda: Breath of the Wild",
+        "score": 97,
+        "source": "Metacritic",
+        "text": "Where it takes mechanics from others in the industry, it improves upon them and introduces new ones.",
+        "date": "2017-03-03"
+    },
+    {
+        "gameTitle": "Elden Ring",
+        "score": 95,
+        "source": "Gameline Staff",
+        "text": "Un mundo abierto enorme que respeta la curiosidad del jugador y ofrece un gran desafío.",
+        "date": "2022-02-25"
+    },
+    {
+        "gameTitle": "Cuphead",
+        "score": 88,
+        "source": "Gameline Staff",
+        "text": "Arte dibujado a mano precioso y jefes muy exigentes que pondrán a prueba tu paciencia.",
+        "date": "2017-09-29"
+    },
+    {
+        "gameTitle": "Red Dead Redemption 2",
+        "score": 97,
+        "source": "Gameline Staff",
+        "text": "Una historia inolvidable en un mundo lleno de detalles, aunque su ritmo lento no es para todos.",
+        "date": "2018-10-26"
+    }
+]

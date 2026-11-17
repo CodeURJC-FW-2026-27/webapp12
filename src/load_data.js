@@ -11,8 +11,18 @@ const dataString = await fs.readFile(DATA_FOLDER + '/' + dataFile, 'utf8');
 const posts = JSON.parse(dataString);
 
 await board.deletePosts();
+await board.deleteReviews();
+
+// Los juegos se guardan primero para poder vincular cada reseña con su juego por el título
+const postIds = {};
 for(let post of posts){
-    await board.addPost(post);
+    const result = await board.addPost(post);
+    postIds[post.Title] = result.insertedId;
+}
+
+const reviewsString = await fs.readFile(DATA_FOLDER + '/reviews.json', 'utf8');
+for(let { gameTitle, ...review } of JSON.parse(reviewsString)){
+    await board.addReview({ ...review, postId: postIds[gameTitle] });
 }
 
 await fs.rm(UPLOADS_FOLDER, { recursive: true, force: true });
