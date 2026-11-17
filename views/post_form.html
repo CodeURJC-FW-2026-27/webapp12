@@ -36,6 +36,11 @@
             </div>
 
             <div class="mb-3">
+                         <div class="mb-3">
+     <label class="form-label" for="description">Description (20-500 characters)</label>
+                <textarea class="form-control" id="description" name="description" rows="4"
+                    minlength="20" maxlength="500" required>{{post.description}}</textarea>
+            </div>   
                 <label class="form-label" for="genre">Genre</label>
                 <select class="form-select" id="genre" name="genre">
                     {{#genres}}
