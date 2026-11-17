@@ -211,6 +211,20 @@ router.get('/post/:id', async (req, res) => {
 
     res.render('show_post', { post });
 });
+// Formulario de edición, relleno con los valores actuales
+router.get('/post/:id/edit', async (req, res) => {
+
+    const post = await board.getPost(req.params.id);
+
+    if (!post) {
+        return showError(res, 'El juego no existe.', '/', 'Ir a la página principal');
+    }
+
+    renderForm(res, 'Edit Game', `/post/${post._id}/edit`, post, `/post/${post._id}`);
+});
+
+// Guardar los cambios de un juego (mismo código que al crear)
+router.post('/post/:id/edit', upload.single('image'), savePost);
 
 router.post('/post/:id/delete', async (req, res) => {
 
