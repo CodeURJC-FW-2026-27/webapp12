@@ -56,16 +56,20 @@ router.get('/', async (req, res) => {
 
 router.post('/post/new', upload.single('image'), async (req, res) => {
 
-    const title = req.body.Title;
+    // Validamos los datos; si hay errores, mostramos la página de error
+    const errors = await validatePost(req.body);
+
+    if (errors.length > 0) {
+        // Borramos la imagen subida para no dejar archivos sueltos
+        if (req.file) await fs.rm(req.file.path);
+        return showError(res, errors, '/New.html', 'Volver al formulario');
+    }
+
     const { company, date, price, genre } = req.body;
     const numericPrice = Number(price);
 
-    if (!title?.trim() || !company?.trim() || !date?.trim() || !price?.trim() || !Number.isFinite(numericPrice)) {
-        return res.status(400).send('Missing or invalid required post fields.');
-    }
-
     let post = {
-        Title: title.trim(),
+        Title: req.body.Title.trim(),
         company: company.trim(),
         date: date.trim(),
         price: numericPrice,
