@@ -38,12 +38,11 @@
                             <a href="New.html" class="text-white">Add a new game </a>
                           
                         </button>
-                <form action="/" method="get" class="d-flex">
-                    {{#genre}}<input type="hidden" name="genre" value="{{.}}">{{/genre}}
-                    <input type="text" name="search" value="{{search}}" placeholder="Search..." aria-label="Search by title">
-                    <button type="submit" class="btn btn-outline-dark border border-2 text-white" style="margin-right: 10px;">
-                        Search</button>
-                </form>
+                <div>
+    <input type="text" placeholder="Search...">
+    <button class="btn btn-outline-dark border border-2 text-white" style="margin-right: 10px;">
+        Search</button>
+</div>
             </div>
         </div>
 
@@ -53,16 +52,6 @@
       
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-                <div class="container px-4 px-lg-5 mt-5">
-            <!-- ↓↓↓ PEGAR AQUÍ ↓↓↓ -->
-            <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
-                <a class="btn btn-outline-dark {{#allGenresActive}}active{{/allGenresActive}}" href="{{allGenresUrl}}">All genres</a>
-                {{#genres}}
-                <a class="btn btn-outline-dark {{#active}}active{{/active}}" href="{{url}}">{{label}}</a>
-                {{/genres}}
-            </div>
-            
-            <div class="row gx-4 gx-lg-5 row-cols-2 ...">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
                     <div class="col mb-5">
                         <div class="card h-100">
