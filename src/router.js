@@ -13,7 +13,40 @@ function showError(res, errors, backUrl, backText) {
 
     res.status(400).render('error', { errors, backUrl, backText });
 }
+// Comprueba los datos del formulario y devuelve la lista de errores (vacía si todo está bien)
+async function validatePost(data) {
 
+    const errors = [];
+    const title = data.Title?.trim();
+    const price = Number(data.price);
+
+    if (!title) {
+        errors.push('El título es obligatorio.');
+    } else {
+        // El título debe empezar por mayúscula
+        if (!/^[A-ZÁÉÍÓÚÑ]/.test(title)) {
+            errors.push('El título debe empezar por mayúscula.');
+        }
+        // El título no puede estar repetido
+        if (await board.getPostByTitle(title)) {
+            errors.push('Ya existe un juego con ese título.');
+        }
+    }
+
+    if (!data.company?.trim()) {
+        errors.push('La compañía es obligatoria.');
+    }
+
+    if (!data.date || Number.isNaN(Date.parse(data.date))) {
+        errors.push('La fecha no es válida.');
+    }
+
+    if (!data.price?.trim() || !Number.isFinite(price) || price < 0 || price > 1000) {
+        errors.push('El precio debe ser un número entre 0 y 1000.');
+    }
+
+    return errors;
+}
 router.get('/', async (req, res) => {
 
     let posts = await board.getPosts();
