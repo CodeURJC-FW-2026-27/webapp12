@@ -41,3 +41,34 @@ export async function getPostByTitle(title) {
 
     return await posts.findOne({ Title: title });
 }
+function buildFilter({ search, genre } = {}) {
+
+    const filter = {};
+    const escape = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+    if (search) {
+        // Partial match on the title
+        filter.Title = { $regex: escape(search), $options: 'i' };
+    }
+    if (genre) {
+        // Exact match on the genre, ignoring case and surrounding spaces
+        filter.genre = { $regex: '^\\s*' + escape(genre) + '\\s*$', $options: 'i' };
+    }
+    return filter;
+}
+
+// Counts the games that match the search and genre filters
+export async function countPosts(options) {
+
+    return await posts.countDocuments(buildFilter(options));
+}
+
+// Returns one page of games that match the filters (skip/limit do the pagination)
+export async function getPostsPage({ search, genre, skip = 0, limit = 6 } = {}) {
+
+    return await posts.find(buildFilter({ search, genre }))
+        .sort({ _id: 1 })
+        .skip(skip)
+        .limit(limit)
+        .toArray();
+}
