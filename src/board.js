@@ -118,3 +118,11 @@ export async function deleteReviews() {
 
     return await reviews.deleteMany();
 }
+
+// Deletes all the reviews of a game and returns them (to be able to remove their images)
+export async function deleteReviewsByPost(postId) {
+
+    const postReviews = await getReviewsByPost(postId);
+    await reviews.deleteMany({ postId: new ObjectId(postId) });
+    return postReviews;
+}

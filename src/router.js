@@ -240,6 +240,16 @@ router.post('/post/:id/delete', async (req, res) => {
         await fs.rm(board.UPLOADS_FOLDER + '/' + post.imageFilename, { force: true });
     }
 
+    // Las reseñas del juego se borran con él (y sus imágenes)
+    if (post) {
+        const oldReviews = await board.deleteReviewsByPost(req.params.id);
+        for (const review of oldReviews) {
+            if (review.imageFilename) {
+                await fs.rm(board.UPLOADS_FOLDER + '/' + review.imageFilename, { force: true });
+            }
+        }
+    }
+
     showMessage(res, 'Juego eliminado', 'El juego ha sido eliminado correctamente.', '/', 'Ir a la página principal');
 });
 // Muestra el formulario de juego (vacío al crear, relleno al editar)
@@ -404,3 +414,4 @@ router.get('/post/:id/review/:reviewId/image', async (req, res) => {
 
     res.download(board.UPLOADS_FOLDER + '/' + review.imageFilename);
 });
+
