@@ -1,22 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
     <title>GAMELINE - A web for browsing videogames</title>
 
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="IMAGES/gameline pequeño.ico" />
+    <!-- Favicon (absolute path, so it works from any URL) -->
+    <link rel="icon" type="image/png" href="/img/gameline.png" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap). Absolute path: it must not depend on the page URL -->
+    <link href="/styles.css" rel="stylesheet" />
 </head>
 
-{{> header}}
+<body>
+    {{> header}}
 
 <main class="container py-5">
     <div class="row gx-5">
