@@ -4,29 +4,34 @@ import * as board from './board.js';
 const UPLOADS_FOLDER = './uploads';
 const DATA_FOLDER = './data';
 
-let dataFile = 'data.json';
+// Solo cargamos los datos de ejemplo si la base de datos está vacía
+const existingGames = await board.countPosts();
 
-const dataString = await fs.readFile(DATA_FOLDER + '/' + dataFile, 'utf8');
+if (existingGames === 0) {
 
-const posts = JSON.parse(dataString);
+    const dataString = await fs.readFile(DATA_FOLDER + '/data.json', 'utf8');
+    const posts = JSON.parse(dataString);
 
-await board.deletePosts();
-await board.deleteReviews();
+    // Si no hay juegos, cualquier reseña suelta no tiene sentido: la borramos
+    await board.deleteReviews();
 
-// Los juegos se guardan primero para poder vincular cada reseña con su juego por el título
-const postIds = {};
-for(let post of posts){
-    const result = await board.addPost(post);
-    postIds[post.Title] = result.insertedId;
+    // Los juegos se guardan primero para poder vincular cada reseña con su juego por el título
+    const postIds = {};
+    for (let post of posts) {
+        const result = await board.addPost(post);
+        postIds[post.Title] = result.insertedId;
+    }
+
+    const reviewsString = await fs.readFile(DATA_FOLDER + '/reviews.json', 'utf8');
+    for (let { gameTitle, ...review } of JSON.parse(reviewsString)) {
+        await board.addReview({ ...review, postId: postIds[gameTitle] });
+    }
+
+    // Copiamos las imágenes de ejemplo SIN borrar lo que ya hubiera en uploads
+    await fs.mkdir(UPLOADS_FOLDER, { recursive: true });
+    await fs.cp(DATA_FOLDER + '/images', UPLOADS_FOLDER, { recursive: true });
+
+    console.log('Demo data loaded');
+} else {
+    console.log('The database already has data: demo data not loaded');
 }
-
-const reviewsString = await fs.readFile(DATA_FOLDER + '/reviews.json', 'utf8');
-for(let { gameTitle, ...review } of JSON.parse(reviewsString)){
-    await board.addReview({ ...review, postId: postIds[gameTitle] });
-}
-
-await fs.rm(UPLOADS_FOLDER, { recursive: true, force: true });
-await fs.mkdir(UPLOADS_FOLDER);
-await fs.cp(DATA_FOLDER + '/images', UPLOADS_FOLDER, { recursive: true });
-
-console.log('Demo data loaded');
