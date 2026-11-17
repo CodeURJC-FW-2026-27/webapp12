@@ -1,6 +1,7 @@
 [
     {
         "Title": "The Legend of Zelda: Breath of the Wild",
+        "description": "Link wakes up after a hundred years of sleep in a ruined Hyrule and sets out to defeat Calamity Ganon in a huge open world full of freedom.",
         "company": "Nintendo",
         "date": "2017-03-03",
         "price": 59.99,
@@ -9,6 +10,7 @@
     },
     {
         "Title": "Assassin's Creed Mirage",
+        "description": "A return to the series' roots: follow Basim, a street thief in ninth-century Baghdad, as he joins the Hidden Ones and learns the art of stealth.",
         "company": "Ubisoft",
         "date": "2023-10-05",
         "price": 69.99,
@@ -17,6 +19,7 @@
     },
     {
         "Title": "Cuphead",
+        "description": "A run-and-gun platformer with hand-drawn 1930s cartoon visuals, where two brothers must pay their debt to the Devil by defeating brutal bosses.",
         "company": "Studio MDHR",
         "date": "2017-09-29",
         "price": 29.99,
@@ -25,6 +28,7 @@
     },
     {
         "Title": "Cyberpunk 2077",
+        "description": "An open-world action RPG set in Night City, where you play V, a mercenary searching for a unique implant that holds the key to immortality.",
         "company": "CD Projekt",
         "date": "2020-12-10",
         "price": 59.99,
@@ -33,6 +37,7 @@
     },
     {
         "Title": "GTA VI",
+        "description": "The next entry in Rockstar's open-world crime saga, set in the state of Leonida and its Vice City, with a new pair of protagonists.",
         "company": "Rockstar Games",
         "date": "2026-19-11",
         "price": 69.99,
@@ -41,6 +46,7 @@
     },
     {
         "Title": "Elden Ring",
+        "description": "An action RPG created by FromSoftware and George R. R. Martin: explore the Lands Between, face demanding bosses and become the Elden Lord.",
         "company": "FromSoftware",
         "date": "2022-02-25",
         "price": 59.99,
@@ -49,6 +55,7 @@
     },
     {
         "Title":"Red Dead Redemption 2",
+        "description": "The story of Arthur Morgan and the Van der Linde gang as they try to survive in the dying American Wild West of 1899.",
         "company":"Rockstar Games",
         "date":"2018-10-26",    
         "price":59.99,
