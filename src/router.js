@@ -24,12 +24,16 @@ function showMessage(res, title, message, nextUrl, nextText) {
 
     res.render('message', { title, message, nextUrl, nextText });
 }
+// Longitud mínima y máxima de la descripción del juego
+const MIN_DESCRIPTION = 20;
+const MAX_DESCRIPTION = 500;
 // Comprueba los datos del formulario y devuelve la lista de errores (vacía si todo está bien)
 async function validatePost(data,currentId = null) {
 
     const errors = [];
     const title = data.Title?.trim();
     const price = Number(data.price);
+    const description = data.description?.trim();
 
     if (!title) {
         errors.push('El título es obligatorio.');
@@ -55,6 +59,9 @@ async function validatePost(data,currentId = null) {
 
     if (!data.price?.trim() || !Number.isFinite(price) || price < 0 || price > 1000) {
         errors.push('El precio debe ser un número entre 0 y 1000.');
+    }
+        if (!description || description.length < MIN_DESCRIPTION || description.length > MAX_DESCRIPTION) {
+        errors.push(`La descripción debe tener entre ${MIN_DESCRIPTION} y ${MAX_DESCRIPTION} caracteres.`);
     }
 
     return errors;
@@ -108,6 +115,7 @@ async function savePost(req, res) {
         company: company.trim(),
         date: date.trim(),
         price: Number(price),
+                description: req.body.description.trim(),
         ...(genre && { genre })
     };
 
