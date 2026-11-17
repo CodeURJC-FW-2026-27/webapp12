@@ -9,6 +9,8 @@ const client = new MongoClient('mongodb://localhost:27017');
 const db = client.db('board');
 const posts = db.collection('posts');
 
+const reviews = db.collection('reviews');
+
 export const UPLOADS_FOLDER = './uploads';
 
 export async function addPost(post) {
@@ -76,4 +78,43 @@ export async function getPostsPage({ search, genre, skip = 0, limit = 6 } = {}) 
 export async function updatePost(id, fields) {
 
     return await posts.updateOne({ _id: new ObjectId(id) }, { $set: fields });
+}
+
+// ---------- Reviews (secondary entity). Each review is linked to a game by "postId" ----------
+
+export async function addReview(review) {
+
+    return await reviews.insertOne(review);
+}
+
+// Returns all the reviews of one game
+export async function getReviewsByPost(postId) {
+
+    return await reviews.find({ postId: new ObjectId(postId) }).sort({ _id: 1 }).toArray();
+}
+
+// Looks for a review of the same game with the same source
+export async function getReviewBySource(postId, source) {
+
+    return await reviews.findOne({ postId: new ObjectId(postId), source });
+}
+
+export async function getReview(id) {
+
+    return await reviews.findOne({ _id: new ObjectId(id) });
+}
+
+export async function deleteReview(id) {
+
+    return await reviews.findOneAndDelete({ _id: new ObjectId(id) });
+}
+// Updates the given fields of a review (the other fields are not touched)
+export async function updateReview(id, fields) {
+
+    return await reviews.updateOne({ _id: new ObjectId(id) }, { $set: fields });
+}
+
+export async function deleteReviews() {
+
+    return await reviews.deleteMany();
 }

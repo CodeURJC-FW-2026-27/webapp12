@@ -29,6 +29,48 @@
             </div>
         </div>
     </div>
+                <!-- Reviews of the game -->
+    <section class="mt-5">
+        <h2>Reviews</h2>
+
+        {{^reviews}}
+        <p class="text-muted">This game has no reviews yet.</p>
+        {{/reviews}}
+
+        {{#reviews}}
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title"><strong>Score:</strong> {{score}}</h5>
+                <p><strong>Source:</strong> {{source}}</p>
+                <p class="card-text">{{text}}</p>
+                <p><strong>Date:</strong> {{date}}</p>
+                                {{#imageFilename}}
+                <img class="img-fluid rounded mb-3" style="max-height: 250px;"
+                    src="/post/{{post._id}}/review/{{_id}}/image" alt="Image of the review">
+                {{/imageFilename}}
+                                                <div class="d-flex gap-2">
+                    <a href="/post/{{post._id}}/review/{{_id}}/edit" class="btn btn-primary">Edit Review</a>
+
+                    <form action="/post/{{post._id}}/review/{{_id}}/delete" method="post">
+                        <button type="submit" class="btn btn-danger">Delete Review</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{/reviews}}
+    </section>
+
+    <!-- New review -->
+    <section class="mt-5">
+        <h2>Add a review</h2>
+        <div class="card mt-3">
+            <div class="card-body">
+                {{#reviewForm}}
+                {{> review_form}}
+                {{/reviewForm}}
+            </div>
+        </div>
+    </section>
 </main>
 
 {{> footer}}

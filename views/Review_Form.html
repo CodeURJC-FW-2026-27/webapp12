@@ -1,0 +1,33 @@
+<form class="row g-3" action="{{action}}" method="post" enctype="multipart/form-data">
+
+    <div class="col-md-4">
+        <label class="form-label" for="score">Score (1-100)</label>
+        <input class="form-control" type="number" id="score" name="score" value="{{review.score}}" min="1" max="100" required>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label" for="source">Source</label>
+        <input class="form-control" type="text" id="source" name="source" value="{{review.source}}" maxlength="50" required>
+    </div>
+
+    <div class="col-md-4">
+        <label class="form-label" for="reviewDate">Date</label>
+        <input class="form-control" type="date" id="reviewDate" name="date" value="{{review.date}}" required>
+    </div>
+
+    <div class="col-12">
+        <label class="form-label" for="text">Text</label>
+        <textarea class="form-control" id="text" name="text" rows="4" minlength="10" maxlength="1000" required>{{review.text}}</textarea>
+    </div>
+
+    <div class="col-12">
+        <label class="form-label" for="reviewImage">Image (optional)</label>
+        <input class="form-control" type="file" id="reviewImage" name="image" accept="image/*">
+                {{#isEdit}}<div class="form-text">Leave empty to keep the current image.</div>{{/isEdit}}
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Save</button>
+                {{#isEdit}}<a href="{{cancelUrl}}" class="btn btn-secondary">Cancel</a>{{/isEdit}}
+    </div>
+</form>
