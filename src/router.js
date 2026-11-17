@@ -73,7 +73,7 @@ const POSTS_PER_PAGE = 6;
 const GENRES = [
     { value: 'action', label: 'Action' },
     { value: 'adventure', label: 'Adventure' },
-    { value: 'rpg', label: 'Role-playing / RPG' },
+    { value: 'Role-playing / RPG', label: 'Role-playing / RPG' },
     { value: 'strategy', label: 'Strategy' },
     { value: 'Fighting', label: 'Fighting' },
     { value: 'simulation', label: 'Simulation' },
