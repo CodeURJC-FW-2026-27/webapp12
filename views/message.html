@@ -1,0 +1,15 @@
+{{> header}}
+
+<main class="container py-5 text-center">
+    <h1 class="mb-4">{{title}}</h1>
+
+    <!-- Cuadro verde con el mensaje de confirmación -->
+    <div class="alert alert-success" style="max-width: 600px; margin: 0 auto;">
+        {{message}}
+    </div>
+
+    <!-- Botón que lleva a la página que toque después -->
+    <a href="{{nextUrl}}" class="btn btn-primary mt-4">{{nextText}}</a>
+</main>
+
+{{> footer}}
