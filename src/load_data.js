@@ -28,8 +28,7 @@ if (existingGames === 0) {
 
     // Copiamos las imágenes de ejemplo SIN borrar lo que ya hubiera en uploads
     await fs.mkdir(board.UPLOADS_FOLDER, { recursive: true });
-    await fs.cp(DATA_FOLDER + '/images', UPLOADS_FOLDER, { recursive: true });
-
+    await fs.cp(DATA_FOLDER + '/images', board.UPLOADS_FOLDER, { recursive: true });
     console.log('Demo data loaded');
 } else {
     console.log('The database already has data: demo data not loaded');
