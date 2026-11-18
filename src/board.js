@@ -37,8 +37,8 @@ export async function getPost(id){
 
     return await posts.findOne({ _id: new ObjectId(id) });
 }
-// Busca en la base de datos un juego con exactamente ese título.
-// Devuelve el juego si existe, o null si no existe 
+//Searches for a game by its title (case-insensitive, ignoring surrounding spaces)
+//Returns null if it doesn't exist
 export async function getPostByTitle(title) {
 
     return await posts.findOne({ Title: title });
@@ -74,7 +74,7 @@ export async function getPostsPage({ search, genre, skip = 0, limit = 6 } = {}) 
         .limit(limit)
         .toArray();
 }
-// Actualiza los campos indicados de un juego (el resto de campos no se tocan)
+// Updates the specified fields of a game (the other fields are not touched)
 export async function updatePost(id, fields) {
 
     return await posts.updateOne({ _id: new ObjectId(id) }, { $set: fields });

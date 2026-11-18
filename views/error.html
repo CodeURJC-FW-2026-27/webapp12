@@ -4,16 +4,16 @@
     <main class="container py-5 text-center">
         <h1 class="mb-4">Error</h1>
 
-        <!-- Cuadro rojo con los mensajes de error -->
+        <!-- Error messages -->
         <div class="alert alert-danger text-start" style="max-width: 600px; margin: 0 auto;">
             <ul class="mb-0">
-                <!-- Mustache repite este <li> una vez por cada error de la lista "errors" -->
+                <!-- Mustache.js iterates over the array of errors and displays each one in a list item -->
                 {{#errors}}
                 <li>{{.}}</li>
                 {{/errors}}
             </ul>
         </div>
-                <!-- Botón que lleva a la página adecuada: la URL y el texto los decide el servidor -->
+                <!-- Button that leads to the appropriate page: the URL and text are decided by the server -->
         <a href="{{backUrl}}" class="btn btn-primary mt-4">{{backText}}</a>
     </main>
 

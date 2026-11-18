@@ -8,7 +8,7 @@ const router = express.Router();
 export default router;
 
 const upload = multer({ dest: board.UPLOADS_FOLDER })
-// Géneros disponibles en el formulario
+// Available genres for the form (value is what the form stores in the database)
 const FORM_GENRES = [
     'Action', 'Adventure', 'Role-playing / RPG', 'Strategy',
     'Fighting', 'Simulation', 'Sport & Driving', 'Puzzle & Rhythm'
@@ -22,18 +22,18 @@ async function removeUpload(filename) {
     }
 }
 
-// Muestra la página de error con la lista de mensajes y un botón de vuelta
+// Shows the error page with a list of errors, a back button and a link to the next page
 function showError(res, errors, backUrl, backText) {
 
     res.status(400).render('error', { errors, backUrl, backText });
 }
 
-// Muestra la página de confirmación con un mensaje y un botón a la siguiente página
+// S
 function showMessage(res, title, message, nextUrl, nextText) {
 
     res.render('message', { title, message, nextUrl, nextText });
 }
-// Longitud mínima y máxima de la descripción del juego
+// minimum and maximum length of the description field
 const MIN_DESCRIPTION = 20;
 const MAX_DESCRIPTION = 500;
 
@@ -43,7 +43,7 @@ function isValidDate(date) {
     return Boolean(date) && !Number.isNaN(Date.parse(date));
 }
 
-// Comprueba los datos del formulario y devuelve la lista de errores (vacía si todo está bien)
+// Checks the form data and returns a list of errors (empty if everything is fine)
 async function validatePost(data,currentId = null) {
 
     const errors = [];
@@ -54,11 +54,11 @@ async function validatePost(data,currentId = null) {
     if (!title) {
         errors.push('El título es obligatorio.');
     } else {
-        // El título debe empezar por mayúscula
+        // The title must start with a capital letter
         if (!/^[A-ZÁÉÍÓÚÑ]/.test(title)) {
             errors.push('El título debe empezar por mayúscula.');
         }
-        // El título no puede coincidir con el de OTRO juego
+        // The title cannot match another game's title
         const existing = await board.getPostByTitle(title);
         if (existing && existing._id.toString() !== currentId) {
             errors.push('Ya existe un juego con ese título.');
@@ -108,14 +108,14 @@ function buildUrl({ search, genre, page }) {
     const query = params.toString();
     return query ? '/?' + query : '/';
 }
-// Guarda un juego: sirve tanto para crear (sin id) como para editar (con id)
+// Saves a game: serves both for creating (without id) and editing (with id)
 async function savePost(req, res) {
 
     const id = req.params.id;
     const isEdit = Boolean(id);
     const formUrl = isEdit ? `/post/${id}/edit` : '/post/new';
 
-    // Validamos los datos; si hay errores, mostramos la página de error
+    // We validate the data and, if there are errors, we delete the uploaded image (if any) and show the error page
     const errors = await validatePost(req.body, id);
 
     if (errors.length > 0) {
@@ -125,7 +125,7 @@ async function savePost(req, res) {
 
     const { company, date, price, genre } = req.body;
 
-    // Campos que se guardan en la base de datos
+    // Fields to save in the database (trimmed and converted to the correct type)
     const fields = {
         Title: req.body.Title.trim(),
         company: company.trim(),
@@ -135,7 +135,7 @@ async function savePost(req, res) {
         ...(genre && { genre })
     };
 
-    // Crear un juego nuevo
+    // Creating a new game
     if (!isEdit) {
         if (req.file) fields.imageFilename = req.file.filename;
 
@@ -145,7 +145,7 @@ async function savePost(req, res) {
             `/post/${result.insertedId}`, 'Ver el juego');
     }
 
-    // Editar un juego existente
+    // Editing an existing game
     const oldPost = await board.getPost(id);
 
     if (!oldPost) {
@@ -153,7 +153,7 @@ async function savePost(req, res) {
 return showError(res, ['El juego no existe.'], '/', 'Ir a la página principal');   
  }
 
-    // Si se sube una imagen nueva, sustituye a la anterior; si no, se mantiene la actual
+    // If a new image is uploaded, replace the previous one; otherwise, keep the current image
     if (req.file) {
         fields.imageFilename = req.file.filename;
         await removeUpload(oldPost.imageFilename);
@@ -218,13 +218,13 @@ router.get('/', async (req, res) => {
     });
 });
 
-// Formulario de juego nuevo (esta ruta debe ir ANTES de /post/:id)
+// new game form
 router.get('/post/new', (req, res) => {
 
     renderForm(res, 'New Game', '/post/new', {}, '/');
 });
 
-// Crear un juego nuevo
+// create a new game
 router.post('/post/new', upload.single('image'), savePost);
 
 router.get('/post/:id', async (req, res) => {
@@ -257,12 +257,12 @@ router.post('/post/:id/delete', async (req, res) => {
 
     let post = await board.deletePost(req.params.id);
 
-    // Si el juego tenía imagen, borramos también el archivo de uploads
+    // if the game had an image, we also delete the file from uploads
     if (post) {
     await removeUpload(post.imageFilename);
 }
 
-     // Las reseñas del juego se borran con él (y sus imágenes)
+     // If the game had reviews, we delete them and their images as well
     if (post) {
         const oldReviews = await board.deleteReviewsByPost(req.params.id);
         for (const review of oldReviews) {
@@ -273,7 +273,7 @@ router.post('/post/:id/delete', async (req, res) => {
     showMessage(res, 'Juego eliminado', 'El juego ha sido eliminado correctamente.', '/', 'Ir a la página principal');
 });
 
-// Muestra el formulario de juego (vacío al crear, relleno al editar)
+// Renders the form for creating or editing a game, with the current values filled in
 function renderForm(res, formTitle, action, post, cancelUrl) {
 
     const genres = FORM_GENRES.map(name => ({ name, selected: name === post.genre }));
@@ -301,7 +301,7 @@ function reviewFormData(action, review, cancelUrl) {
 const MIN_REVIEW_TEXT = 10;
 const MAX_REVIEW_TEXT = 1000;
 
-// Comprueba los datos de la reseña y devuelve la lista de errores (vacía si todo está bien)
+// Checks the review data and returns a list of errors (empty if everything is fine)
 async function validateReview(data, postId, currentId = null) {
 
     const errors = [];
@@ -316,7 +316,7 @@ async function validateReview(data, postId, currentId = null) {
     if (!source) {
         errors.push('La fuente es obligatoria.');
     } else {
-        // La fuente no puede coincidir con la de OTRA reseña del mismo juego
+        // The source cannot match another review of the same game
         const existing = await board.getReviewBySource(postId, source);
         if (existing && existing._id.toString() !== currentId) {
             errors.push('Este juego ya tiene una reseña de esa fuente.');
@@ -334,19 +334,19 @@ async function validateReview(data, postId, currentId = null) {
     return errors;
 }
 
-// Guarda una reseña: sirve tanto para crear (sin reviewId) como para editar (con reviewId)
+// Saves a review: serves both for creating (without reviewId) and editing (with reviewId)
 async function saveReview(req, res) {
 
     const { id: postId, reviewId } = req.params;
     const isEdit = Boolean(reviewId);
     const detailUrl = `/post/${postId}`;
-    // El formulario de crear está en el detalle del juego; el de editar, en su propia página
+    // The form for creating is in the game detail page; the one for editing is on its own page
     const formUrl = isEdit ? `${detailUrl}/review/${reviewId}/edit` : detailUrl;
 
     const post = await board.getPost(postId);
     const oldReview = isEdit ? await board.getReview(reviewId) : null;
 
-    // El juego debe existir y, al editar, la reseña debe ser de ese juego
+    // The game must exist and, when editing, the review must be for that game
     if (!post || (isEdit && oldReview?.postId.toString() !== postId)) {
         await removeUpload(req.file?.filename); // IMAGEN
         return showError(res, ['El juego o la reseña no existe.'], '/', 'Ir a la página principal');
@@ -366,7 +366,7 @@ async function saveReview(req, res) {
         date: req.body.date.trim()
     };
 
-    // IMAGEN: si se sube una nueva, sustituye a la anterior; si no, se mantiene la actual
+    // If a new image is uploaded, replace the previous one; otherwise, keep the current image
     if (req.file) {
         fields.imageFilename = req.file.filename;
         await removeUpload(oldReview?.imageFilename);
@@ -396,7 +396,7 @@ router.post('/post/:id/review/:reviewId/delete', async (req, res) => {
         return showError(res, ['La reseña no existe.'], detailUrl, 'Volver al juego');
     }
 
-    // Si la reseña tenía imagen, borramos también el archivo de uploads
+    // If the review had an image, we also delete the file from uploads
     await removeUpload(review.imageFilename);
 
     showMessage(res, 'Reseña eliminada', 'La reseña ha sido eliminada correctamente.', detailUrl, 'Volver al juego');

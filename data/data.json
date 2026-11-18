@@ -24,7 +24,7 @@
         "date": "2017-09-29",
         "price": 29.99,
         "imageFilename": "Cuphead.png",
-        "genre": "Platformer"
+        "genre": "Action"
     },
     {
         "Title": "Cyberpunk 2077",
@@ -32,14 +32,14 @@
         "company": "CD Projekt",
         "date": "2020-12-10",
         "price": 59.99,
-        "imageFilename": "cyberPunk2077.png",
-        "genre": "RPG"   
+        "imageFilename": "CyberPunk2077.png",
+        "genre": "Role-playing / RPG"   
     },
     {
         "Title": "GTA VI",
         "description": "The next entry in Rockstar's open-world crime saga, set in the state of Leonida and its Vice City, with a new pair of protagonists.",
         "company": "Rockstar Games",
-        "date": "2026-19-11",
+        "date": "2026-11-19",
         "price": 69.99,
         "imageFilename": "GTA VI.png",
         "genre": "Action"   
@@ -51,7 +51,7 @@
         "date": "2022-02-25",
         "price": 59.99,
         "imageFilename": "Elden Ring.png",
-        "genre": "RPG"
+        "genre": "Role-playing / RPG"
     },
     {
         "Title":"Red Dead Redemption 2",

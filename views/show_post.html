@@ -3,14 +3,14 @@
 <main class="container py-5">
     <div class="row gx-5">
 
-        <!-- Imagen del juego (solo si tiene) -->
+        <!-- Image of the game (if it has one) -->
         <div class="col-md-6">
             {{#post.imageFilename}}
             <img class="img-fluid rounded w-100" src="/post/{{post._id}}/image" alt="{{post.Title}}">
             {{/post.imageFilename}}
         </div>
 
-        <!-- Datos del juego y botones -->
+        <!-- Game details and buttons -->
         <div class="col-md-6">
             <h1 class="fw-bolder">{{post.Title}}</h1>
             <p><strong>Company:</strong> {{post.company}}</p>
@@ -23,7 +23,7 @@
                 <a href="/" class="btn btn-secondary">Back to Store</a>
                 <a href="/post/{{post._id}}/edit" class="btn btn-primary">Edit Game</a>
 
-                <!-- Borrar es un formulario POST para no borrar datos con un simple enlace -->
+                <!-- Delete is a POST form to avoid deleting data with a simple link -->
                 <form action="/post/{{post._id}}/delete" method="post">
                     <button type="submit" class="btn btn-danger">Delete Game</button>
                 </form>
