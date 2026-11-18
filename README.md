@@ -57,7 +57,7 @@ These features will improve the user experience browsing in our web.
 ![alt text](https://github.com/CodeURJC-FW-2026-27/webapp12/blob/main/IMAGES/Screenshots/index5.png "index 5")
 #### Details Page
 ![alt text](https://github.com/CodeURJC-FW-2026-27/webapp12/blob/main/IMAGES/Screenshots/Sin%20t%C3%ADtulo.png "details")
-### Participacion en la practica
+### PARTICIPATION
 #### Asier Zapata Fernández-Gallardo
 - I chose the template, started the index page and helped create all of the other pages and have a common direction.
 - The page i worked the most on is `index`, but i also helped in `about` and `new` inserting the header and the footer and helping formatting the pages.  
@@ -95,9 +95,94 @@ These features will improve the user experience browsing in our web.
      - [BACK BUTTON ADDED TO ABOUT PAGE](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/1f7f5f66ea80cba5815aeeaa83728de029028d24)
      - [Add,Delete and Edit buttons added to the about.html page.](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/c35060e9be19c04109b8434322459e7e1ca2ffc9)
      - [Detailing the changes made to the about.html file, it appears that a style attribute was added to the div with the class "card".](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/2f3fb0f04cbfc09270bf5b1df08747cd3f809fc5)
-       
-  
-    
+
+
+## PRÁCTICA 2
+
+## EXECUTION INSTRUCTIONS
+### REQUIREMENTS
+- **Node.js** 18 or later 
+- **nodemon package manager** 
+- **MongoDB** 6.0 or later, running locally on the default port `27017` without authentication
+- **Git**
+### STEPS
+
+# 1. Download the code
+git clone https://github.com/CodeURJC-FW-2026-27/webapp12.git
+cd webapp12
+
+# 2. Install the dependencies
+npm install
+
+# 3. Start MongoDB (if it is not already running as a service)
+mongod --dbpath <folder-for-the-database>
+
+# 4. Start the application (in another terminal, from the project folder)
+npm start
+
+## File description
+
+### Root
+| File | Responsibility |
+| ------------- | ------------- |
+| `package.json` / `package-lock.json` | Project metadata, dependencies (express, mustache-express, multer, mongodb) and the `start` and `watch` scripts. |
+| `.gitignore` | Excludes `node_modules/` and `uploads/` from the repository. |
+| `README.md` | Project documentation. |
+
+### `src/` (server code)
+| File | Responsibility |
+| ------------- | ------------- |
+| `app.js` | Entry point. Creates the Express server, configures Mustache, static files and form parsing, registers the router and the error handler, and listens on port 3000. |
+| `router.js` | All the routes: main page (pagination, search and genre filter), game detail/create/edit/delete, review create/edit/delete, image serving. It also contains the server-side validation of games and reviews and the helpers that render the confirmation and error pages. |
+| `board.js` | Data access layer. Every MongoDB operation on games and reviews (insert, find, count, paginate, update, delete). |
+| `load_data.js` | Loads the demo games and reviews into the database and copies the demo images to `uploads` when the database is empty. |
+
+### `views/` (Mustache templates)
+| File | Responsibility |
+| ------------- | ------------- |
+| `header.html` | head, navigation bar and title search, shared by all pages. |
+| `footer.html` | footer, shared by all pages. |
+| `index.html` |genre filter, game cards, "Add a new game" button and pagination. |
+| `show_post.html` | game data, its reviews, edit/delete buttons and the new review form. |
+| `post_form.html` | Game form, reused for creating and editing a game. |
+| `review_form.html` | review form, reused for creating and editing a review. |
+| `edit_review.html` | Page that contains the review form to edit a review. |
+| `message.html` | Confirmation page, reused for every successful create/edit/delete. |
+| `error.html` | Error page, reused for every validation or processing error. |
+
+### `public/` (static files)
+| File | Responsibility |
+| ------------- | ------------- |
+| `styles.css` | Stylesheet shared by all pages. |
+| `img/gameline.png` | Website logo. |
+
+### `data/` (demo data)
+| File | Responsibility |
+| ------------- | ------------- |
+| `data.json` | Demo games (main entity). |
+| `reviews.json` | Demo reviews (secondary entity), linked to games by `gameTitle`. |
+| `images/` | Cover images of the demo games, copied to `uploads` on startup. |
+
+### Other folders
+| Folder | Responsibility |
+| ------------- | ------------- |
+| `uploads/` | Images uploaded by users and copies of the demo images (generated, not stored in the repository). |
+| `IMAGES/` | Images and screenshots of Practice 1 used in this README. |
+
+### DEMO VIDEO:
+
+
+## Participation
+#### Asier Zapata Fernández-Gallardo
+- I mainly worked on adapting the result from "PRACTICA 1" to be compatible with mongo and our database, changing the whole structure of our project and making the new form to be able to actually add games.
+- I also helped on the organization of the project, helping my teammates and doing documentation
+- The files i worked the most on are: `index.html`, `router.js` , `app.js` and `new.html` 
+My most significative commits are:
+- [release 1 feedback changes](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/9c6c947aed601c479aa2339cc406bef681f02624)
+- [fully changed web to be compatible with mongo and javascript](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/37b6aa766aca3f0d8eb0c6016a480dde7afa27b8)
+- [added games data examples to data.js ](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/fef9f8a8c71da850b5e8b950c0994d76bb9fe110)
+- [English update](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/0881d1e4648477aaf994c5604c87c68a1081edd2)
+- [Finishing touches to practica 2](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/cd24a3ee09883d33949e265c9bf292a76e30ece0)
 
 
 
