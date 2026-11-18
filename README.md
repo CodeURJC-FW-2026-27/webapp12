@@ -211,3 +211,16 @@ My most significant commits are:
   - [Delete reviews when a game is deleted](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/1bc109c2b2b5779b8d53543a6e4295bded2c0b09)
   - [Remove duplicated code in router and load_data](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/bd7e0d2c3bb94504c711cdf535f4427c84bb11bb)
   - [Use header and footer partials in post form and remove unused views](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/8a670efe3d14c3593a8f3afc73b3bcf4af7dc443)
+
+#### David González Pato 
+-- I have configured the demo data loading process so that it only occurs when the database is empty; this ensures that uploaded data and images are no longer deleted every time the application starts.
+- I have added a `description` field to the games (between 20 and 500 characters), which is displayed on the details page.
+- I have created an error page, as well as templates for the header and footer; this allows the structure to be reused across all pages, making the project cleaner and easier to maintain.
+- The files I have worked on the most are: `load_data.js`, `router.js`, `error.html`, `header.html`, `footer.html`, and `post_form.html`.
+ - My most significant commits are:
+   - [Creation of the error page](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/86032bdce17acf777ecf1ec37e2103a78862fa73)
+   - [Create a reusable header and footer](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/038ed50d58713738eceb82fe87b185e68e0f9258)
+   - [Add description field to the demo games data](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/763acef7450cc19e35578089040a2b3256efd54b)
+   - [Fix RPG genre filter to match the game form value](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/c0120f47f2b79353566e6ed2f448a074c41e24be)
+   - [Add edit game routes](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/63149c1554cf59044b14b95bc6918ad0c6bdacc0)
+   - [Modify the router so that, when the form submission fails, the user sees a message explaining the error.](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/712718147e6980dd87281c3eb96dc59f445a59cc) 
