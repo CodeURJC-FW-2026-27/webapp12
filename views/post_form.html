@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{formTitle}} - GAMELINE</title>
-    <link href="/styles.css" rel="stylesheet" />
-</head>
-<body>
+{{> header}}
     <div class="container my-5" style="max-width: {{#isEdit}}1100px{{/isEdit}}{{^isEdit}}600px{{/isEdit}};">
         <div class="row g-4">
     <div class="{{#isEdit}}col-md-6{{/isEdit}}{{^isEdit}}col-12{{/isEdit}}">
@@ -88,5 +80,4 @@
     </div>
 </div>
 
-</body>
-</html>
+{{> footer}}
