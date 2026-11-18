@@ -184,5 +184,13 @@ My most significative commits are:
 - [English update](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/0881d1e4648477aaf994c5604c87c68a1081edd2)
 - [did readme](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/e9cea370eadfa394c4951d5b7f7050beb39ff362)
 
-
-
+#### Leonardo Di Salvo Alonso
+- I mainly worked on the main page: pagination (6 games per page) with previous/next links and the current page highlighted, the title search and the genre filter buttons, including the MongoDB queries behind them.
+- I also built the shared form used to create and edit games, with the shared `savePost` handler, and I moved the search bar into the header so it appears on every page. I fixed the CSS of the game detail page, and I removed `node_modules` and `uploads` from git (`.gitignore`).
+- The files I worked the most on are: `index.html`, `router.js`, `post_form.html`, `show_post.html` and `board.js`
+My most significant commits are:
+- [Add buildFilter, countPosts and getPostsPage to query games by title, genre and page](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/e5443d1751aac46e5a2c52833ea3cbcf54d8a0fa)
+- [Paginate the main page (6 per page) and pass search, genre and page links to the view](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/a339341717d32b215c070c2716fa8e5954292bcc)
+- [Add shared post form view for creating and editing games](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/520b5c95ee63bb0c43c88d9b305d62ad52e0a6cc)
+- [Added function SavePost](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/fbfa172528b6bb70f44b3bc0ed473b236fb6b08c)
+- [Added search bar onto header](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/fdcadc1f5a437b0f84f4a75874699b9fd6f364ed)
