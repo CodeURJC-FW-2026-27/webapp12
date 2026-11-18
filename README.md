@@ -200,3 +200,14 @@ My most significant commits are:
 - [Add shared post form view for creating and editing games](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/520b5c95ee63bb0c43c88d9b305d62ad52e0a6cc)
 - [Added function SavePost](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/fbfa172528b6bb70f44b3bc0ed473b236fb6b08c)
 - [Added search bar onto header](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/fdcadc1f5a437b0f84f4a75874699b9fd6f364ed)
+
+#### Aitor Mouzo Navarro
+- I implemented the secondary entity (game reviews): creating, editing and deleting them from the game detail page, with server-side and browser validation (no duplicated source per game), confirmation and error pages, and an optional image that is kept when editing without choosing a new one. I also made a game's reviews disappear when the game is deleted, and added sample reviews on startup.
+- I reused one form (`review_form.html`) and one handler (`saveReview`) for creating and editing reviews, removed duplicated code, made `post_form.html` use the header and footer partials, and deleted unused views.
+- The files I worked the most on are: `router.js`, `board.js`, `show_post.html`, `review_form.html` and `edit_review.html`.
+- My most significant commits are:
+  - [Add create, edit and delete for reviews](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/e5a4ecc7c99683bd7b2387a30f810f5ae23e1d1b)
+  - [Add sample reviews on startup](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/b9d5b0e836b3709174fec7baeb11454b95fad9e8)
+  - [Delete reviews when a game is deleted](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/1bc109c2b2b5779b8d53543a6e4295bded2c0b09)
+  - [Remove duplicated code in router and load_data](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/bd7e0d2c3bb94504c711cdf535f4427c84bb11bb)
+  - [Use header and footer partials in post form and remove unused views](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/8a670efe3d14c3593a8f3afc73b3bcf4af7dc443)
