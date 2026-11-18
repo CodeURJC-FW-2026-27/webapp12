@@ -99,14 +99,14 @@ These features will improve the user experience browsing in our web.
 
 ## PRÁCTICA 2
 
-## EXECUTION INSTRUCTIONS
-### REQUIREMENTS
-- **Node.js** 18 or later 
-- **nodemon package manager** 
+### Execution instructions
+#### Requirements
+- **Node.js** 18 or later (it includes `npm`)
 - **MongoDB** 6.0 or later, running locally on the default port `27017` without authentication
 - **Git**
-### STEPS
 
+#### Steps
+```bash
 # 1. Download the code
 git clone https://github.com/CodeURJC-FW-2026-27/webapp12.git
 cd webapp12
@@ -119,6 +119,10 @@ mongod --dbpath <folder-for-the-database>
 
 # 4. Start the application (in another terminal, from the project folder)
 npm start
+```
+5. Open http://localhost:3000/ in the browser.
+
+When the database is empty, the sample games and reviews are loaded automatically at startup and their images are copied to the `uploads/` folder. If the database already has data, nothing is loaded.
 
 ## File description
 
@@ -175,8 +179,9 @@ npm start
 ## Participation
 #### Asier Zapata Fernández-Gallardo
 - I mainly worked on adapting the result from "PRACTICA 1" to be compatible with mongo and our database, changing the whole structure of our project and making the new form to be able to actually add games.
-- I also helped on the organization of the project, helping my teammates and doing documentation
-- The files i worked the most on are: `index.html`, `router.js` , `app.js` and `new.html` 
+- I also helped on the organization of the project, helping my teammates and doing documentation.
+- The files i worked the most on are: `index.html`, `router.js` , `app.js` and `new.html` .
+
 My most significative commits are:
 - [release 1 feedback changes](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/9c6c947aed601c479aa2339cc406bef681f02624)
 - [fully changed web to be compatible with mongo and javascript](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/37b6aa766aca3f0d8eb0c6016a480dde7afa27b8)
@@ -188,6 +193,7 @@ My most significative commits are:
 - I mainly worked on the main page: pagination (6 games per page) with previous/next links and the current page highlighted, the title search and the genre filter buttons, including the MongoDB queries behind them.
 - I also built the shared form used to create and edit games, with the shared `savePost` handler, and I moved the search bar into the header so it appears on every page. I fixed the CSS of the game detail page, and I removed `node_modules` and `uploads` from git (`.gitignore`).
 - The files I worked the most on are: `index.html`, `router.js`, `post_form.html`, `show_post.html` and `board.js`
+
 My most significant commits are:
 - [Add buildFilter, countPosts and getPostsPage to query games by title, genre and page](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/e5443d1751aac46e5a2c52833ea3cbcf54d8a0fa)
 - [Paginate the main page (6 per page) and pass search, genre and page links to the view](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/a339341717d32b215c070c2716fa8e5954292bcc)
