@@ -1,7 +1,6 @@
 import fs from 'node:fs/promises';
 import * as board from './board.js';
 
-const UPLOADS_FOLDER = './uploads';
 const DATA_FOLDER = './data';
 
 // Solo cargamos los datos de ejemplo si la base de datos está vacía
@@ -28,7 +27,7 @@ if (existingGames === 0) {
     }
 
     // Copiamos las imágenes de ejemplo SIN borrar lo que ya hubiera en uploads
-    await fs.mkdir(UPLOADS_FOLDER, { recursive: true });
+    await fs.mkdir(board.UPLOADS_FOLDER, { recursive: true });
     await fs.cp(DATA_FOLDER + '/images', UPLOADS_FOLDER, { recursive: true });
 
     console.log('Demo data loaded');

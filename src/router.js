@@ -13,6 +13,15 @@ const FORM_GENRES = [
     'Action', 'Adventure', 'Role-playing / RPG', 'Strategy',
     'Fighting', 'Simulation', 'Sport & Driving', 'Puzzle & Rhythm'
 ];
+
+// Deletes an uploaded image from the uploads folder (does nothing if there is no filename)
+async function removeUpload(filename) {
+
+    if (filename) {
+        await fs.rm(board.UPLOADS_FOLDER + '/' + filename, { force: true });
+    }
+}
+
 // Muestra la página de error con la lista de mensajes y un botón de vuelta
 function showError(res, errors, backUrl, backText) {
 
@@ -27,6 +36,13 @@ function showMessage(res, title, message, nextUrl, nextText) {
 // Longitud mínima y máxima de la descripción del juego
 const MIN_DESCRIPTION = 20;
 const MAX_DESCRIPTION = 500;
+
+// A date is valid if it is not empty and can be parsed
+function isValidDate(date) {
+
+    return Boolean(date) && !Number.isNaN(Date.parse(date));
+}
+
 // Comprueba los datos del formulario y devuelve la lista de errores (vacía si todo está bien)
 async function validatePost(data,currentId = null) {
 
@@ -53,7 +69,7 @@ async function validatePost(data,currentId = null) {
         errors.push('La compañía es obligatoria.');
     }
 
-    if (!data.date || Number.isNaN(Date.parse(data.date))) {
+        if (!isValidDate(data.date)) {
         errors.push('La fecha no es válida.');
     }
 
@@ -103,7 +119,7 @@ async function savePost(req, res) {
     const errors = await validatePost(req.body, id);
 
     if (errors.length > 0) {
-        if (req.file) await fs.rm(req.file.path);
+        await removeUpload(req.file?.filename);
         return showError(res, errors, formUrl, 'Volver al formulario');
     }
 
@@ -133,16 +149,14 @@ async function savePost(req, res) {
     const oldPost = await board.getPost(id);
 
     if (!oldPost) {
-        if (req.file) await fs.rm(req.file.path);
+       await removeUpload(req.file?.filename);
 return showError(res, ['El juego no existe.'], '/', 'Ir a la página principal');   
  }
 
     // Si se sube una imagen nueva, sustituye a la anterior; si no, se mantiene la actual
     if (req.file) {
         fields.imageFilename = req.file.filename;
-        if (oldPost.imageFilename) {
-            await fs.rm(board.UPLOADS_FOLDER + '/' + oldPost.imageFilename, { force: true });
-        }
+        await removeUpload(oldPost.imageFilename);
     }
 
     await board.updatePost(id, fields);
@@ -244,22 +258,21 @@ router.post('/post/:id/delete', async (req, res) => {
     let post = await board.deletePost(req.params.id);
 
     // Si el juego tenía imagen, borramos también el archivo de uploads
-    if (post && post.imageFilename) {
-        await fs.rm(board.UPLOADS_FOLDER + '/' + post.imageFilename, { force: true });
-    }
+    if (post) {
+    await removeUpload(post.imageFilename);
+}
 
-    // Las reseñas del juego se borran con él (y sus imágenes)
+     // Las reseñas del juego se borran con él (y sus imágenes)
     if (post) {
         const oldReviews = await board.deleteReviewsByPost(req.params.id);
         for (const review of oldReviews) {
-            if (review.imageFilename) {
-                await fs.rm(board.UPLOADS_FOLDER + '/' + review.imageFilename, { force: true });
-            }
+            await removeUpload(review.imageFilename);
         }
     }
 
     showMessage(res, 'Juego eliminado', 'El juego ha sido eliminado correctamente.', '/', 'Ir a la página principal');
 });
+
 // Muestra el formulario de juego (vacío al crear, relleno al editar)
 function renderForm(res, formTitle, action, post, cancelUrl) {
 
@@ -314,7 +327,7 @@ async function validateReview(data, postId, currentId = null) {
         errors.push(`El texto debe tener entre ${MIN_REVIEW_TEXT} y ${MAX_REVIEW_TEXT} caracteres.`);
     }
 
-    if (!data.date || Number.isNaN(Date.parse(data.date))) {
+    if (!isValidDate(data.date)) {
         errors.push('La fecha no es válida.');
     }
 
@@ -335,14 +348,14 @@ async function saveReview(req, res) {
 
     // El juego debe existir y, al editar, la reseña debe ser de ese juego
     if (!post || (isEdit && oldReview?.postId.toString() !== postId)) {
-        if (req.file) await fs.rm(req.file.path); // IMAGEN
+        await removeUpload(req.file?.filename); // IMAGEN
         return showError(res, ['El juego o la reseña no existe.'], '/', 'Ir a la página principal');
     }
 
     const errors = await validateReview(req.body, postId, reviewId);
 
     if (errors.length > 0) {
-        if (req.file) await fs.rm(req.file.path); // IMAGEN
+        await removeUpload(req.file?.filename); // IMAGEN
         return showError(res, errors, formUrl, 'Volver al formulario');
     }
 
@@ -356,9 +369,7 @@ async function saveReview(req, res) {
     // IMAGEN: si se sube una nueva, sustituye a la anterior; si no, se mantiene la actual
     if (req.file) {
         fields.imageFilename = req.file.filename;
-        if (oldReview?.imageFilename) {
-            await fs.rm(board.UPLOADS_FOLDER + '/' + oldReview.imageFilename, { force: true });
-        }
+        await removeUpload(oldReview?.imageFilename);
     }
 
     if (isEdit) {
@@ -386,9 +397,7 @@ router.post('/post/:id/review/:reviewId/delete', async (req, res) => {
     }
 
     // Si la reseña tenía imagen, borramos también el archivo de uploads
-    if (review.imageFilename) {
-        await fs.rm(board.UPLOADS_FOLDER + '/' + review.imageFilename, { force: true });
-    }
+    await removeUpload(review.imageFilename);
 
     showMessage(res, 'Reseña eliminada', 'La reseña ha sido eliminada correctamente.', detailUrl, 'Volver al juego');
 });
