@@ -174,7 +174,7 @@ When the database is empty, the sample games and reviews are loaded automaticall
 | `IMAGES/` | Images and screenshots of Practice 1 used in this README. |
 
 ### DEMO VIDEO:
-
+https://youtu.be/kKuT24Y8jSE
 
 ## Participation
 #### Asier Zapata Fernández-Gallardo
