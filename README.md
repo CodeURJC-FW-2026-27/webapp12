@@ -182,7 +182,7 @@ My most significative commits are:
 - [fully changed web to be compatible with mongo and javascript](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/37b6aa766aca3f0d8eb0c6016a480dde7afa27b8)
 - [added games data examples to data.js ](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/fef9f8a8c71da850b5e8b950c0994d76bb9fe110)
 - [English update](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/0881d1e4648477aaf994c5604c87c68a1081edd2)
-- [Finishing touches to practica 2](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/cd24a3ee09883d33949e265c9bf292a76e30ece0)
+- [did readme](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/e9cea370eadfa394c4951d5b7f7050beb39ff362)
 
 
 
