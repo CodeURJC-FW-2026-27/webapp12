@@ -16,6 +16,11 @@
         <div class="container px-4 px-lg-5">
             <img src="/img/gameline.png" alt="Logo" width="48" height="48" class="d-inline-block align-text-top">
             <a class="navbar-brand" href="/">GAMELINE</a>
-            <a href="/post/new" class="btn btn-outline-dark border border-2 text-white">Add a new game</a>
-        </div>
+             <!-- Title search, shown on every page. It sends the typed letters to the main page -->
+            <form action="/" method="get" class="d-flex" role="search">
+                {{#genre}}<input type="hidden" name="genre" value="{{.}}">{{/genre}}
+                <input type="text" name="search" value="{{search}}" placeholder="Search..."
+                       aria-label="Search by title" class="form-control me-2">
+                <button type="submit" class="btn btn-outline-dark border border-2 text-white">Search</button>
+            </form>
     </nav>
