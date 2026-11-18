@@ -213,7 +213,7 @@ My most significant commits are:
   - [Use header and footer partials in post form and remove unused views](https://github.com/CodeURJC-FW-2026-27/webapp12/commit/8a670efe3d14c3593a8f3afc73b3bcf4af7dc443)
 
 #### David González Pato 
--- I have configured the demo data loading process so that it only occurs when the database is empty; this ensures that uploaded data and images are no longer deleted every time the application starts.
+-I have configured the demo data loading process so that it only occurs when the database is empty; this ensures that uploaded data and images are no longer deleted every time the application starts.
 - I have added a `description` field to the games (between 20 and 500 characters), which is displayed on the details page.
 - I have created an error page, as well as templates for the header and footer; this allows the structure to be reused across all pages, making the project cleaner and easier to maintain.
 - The files I have worked on the most are: `load_data.js`, `router.js`, `error.html`, `header.html`, `footer.html`, and `post_form.html`.
